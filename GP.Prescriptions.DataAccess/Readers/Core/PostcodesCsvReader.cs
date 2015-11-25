@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 
-namespace GP.Prescriptions.DataAccess.Core
+namespace GP.Prescriptions.DataAccess.Readers.Core
 {
     using BusinessObjects.Structs;
     using Interfaces;

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GP.Prescriptions.DataAccess.Interfaces
+namespace GP.Prescriptions.DataAccess.Readers.Interfaces
 {
     public interface IPracticesCsvReader
     {

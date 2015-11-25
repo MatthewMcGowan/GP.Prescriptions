@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace GP.Prescriptions.BusinessLayer.Core
 {
-    using DataAccess.Core;
-    using DataAccess.Interfaces;
+    using DataAccess.Readers.Core;
+    using DataAccess.Readers.Interfaces;
     using BusinessObjects.Classes;
     using Interfaces;
 
@@ -40,6 +40,15 @@ namespace GP.Prescriptions.BusinessLayer.Core
 
         public PrescriptionsService() : this (new PracticesCsvReader(), new PostcodesCsvReader())
         {
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        public void GetAllAnalysis()
+        {
+
         }
 
         #endregion

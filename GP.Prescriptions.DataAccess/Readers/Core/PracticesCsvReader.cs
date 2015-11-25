@@ -7,9 +7,9 @@ using System.Configuration;
 using GP.Prescriptions.BusinessObjects.Structs;
 using LumenWorks.Framework.IO.Csv;
 using System.IO;
-using GP.Prescriptions.DataAccess.Interfaces;
+using GP.Prescriptions.DataAccess.Readers.Interfaces;
 
-namespace GP.Prescriptions.DataAccess.Core
+namespace GP.Prescriptions.DataAccess.Readers.Core
 {
     public class PracticesCsvReader : IPracticesCsvReader
     {

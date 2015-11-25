@@ -8,6 +8,6 @@ namespace GP.Prescriptions.BusinessLayer.Interfaces
 {
     public interface IPrescriptionsService
     {
-
+        void GetAllAnalysis();
     }
 }
