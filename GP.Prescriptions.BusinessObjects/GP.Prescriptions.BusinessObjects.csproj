@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Practices.cs" />
+    <Compile Include="Classes\Region.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Structs\PostcodeRegion.cs" />
     <Compile Include="Structs\PracticeData.cs" />

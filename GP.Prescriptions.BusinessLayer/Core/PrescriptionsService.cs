@@ -51,6 +51,31 @@ namespace GP.Prescriptions.BusinessLayer.Core
 
         }
 
+        public int GetPracticeCountByRegion(Region region)
+        {
+            return practices.Dictionary.Count(p => p.Value.Region == region.ToString());
+        }
+
+        public decimal GetAverageActualCostByBnfCode(string bnfCode)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Dictionary<string, decimal> GetTotalSpendPerPostcode()
+        {
+            throw new NotImplementedException();
+        }
+
+        public decimal GetAveragePrescriptionPriceByBnfCode(string bnfCode)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Dictionary<Region, decimal> GetAveragePrescriptionPricePerRegionByBnfCode(string bnfCode)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }

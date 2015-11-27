@@ -34,7 +34,7 @@ namespace GP.Prescriptions.DataAccess.Readers.Core
                     // Get data from row
                     var row = csv.PrescriptionCsvRowToStruct();
 
-                    // Process this row for each query
+                    // Process this data for each query
                     queries.AsParallel().ForAll(q => q.Value.ProcessRow(row));
                 }
             }

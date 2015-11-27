@@ -27,6 +27,14 @@ namespace GP.Prescriptions.BusinessObjects.Classes
 
         #region Public Properties
 
+        public ConcurrentDictionary<string, PostcodeRegion> Dictionary
+        {
+            get
+            {
+                return dictionary;
+            }
+        }
+
         public string GetPracticeRegionByPracticeCode(string practiceCode)
         {
             PostcodeRegion data;

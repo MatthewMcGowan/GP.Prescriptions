@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace GP.Prescriptions.BusinessLayer.Interfaces
 {
+    using GP.Prescriptions.BusinessObjects.Classes;
+
     public interface IPrescriptionsService
     {
         void GetAllAnalysis();
+
+        int GetPracticeCountByRegion(Region region);
     }
 }

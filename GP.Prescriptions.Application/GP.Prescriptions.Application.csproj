@@ -47,12 +47,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GP.Prescriptions.BusinessLayer\GP.Prescriptions.BusinessLayer.csproj">
       <Project>{66674c4b-77d7-4e70-82a0-f2ff0220ee01}</Project>
       <Name>GP.Prescriptions.BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GP.Prescriptions.BusinessObjects\GP.Prescriptions.BusinessObjects.csproj">
+      <Project>{b4d55cd6-3368-4bf5-9d55-a8fdb2d23d51}</Project>
+      <Name>GP.Prescriptions.BusinessObjects</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
