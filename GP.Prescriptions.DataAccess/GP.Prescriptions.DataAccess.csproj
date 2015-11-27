@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\PrescriptionsCsvReaderExtensions.cs" />
+    <Compile Include="QueryTasks\Core\CalculateAverageActCostByBnfCode.cs" />
     <Compile Include="QueryTasks\Interfaces\IPrescriptionsQueryTask.cs" />
     <Compile Include="Readers\Core\PostcodesCsvReader.cs" />
     <Compile Include="Readers\Core\PracticesCsvReader.cs" />
@@ -65,9 +66,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="QueryTasks\Core\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -24,7 +24,23 @@ namespace GP.Prescriptions.DataAccess.Readers.Core
 
         #region Public Methods
 
-        public void ExecuteQueryTasks(Dictionary<string, IPrescriptionsQueryTask> queries)
+        public void ExecuteQueryTask(IPrescriptionsQueryTask query)
+        {
+            using (var csv = new CsvReader(new StreamReader(prescriptionsCsvFile), fileHasHeaders))
+            {
+                // Read all the rows
+                while (csv.ReadNextRecord())
+                {
+                    // Get data from row
+                    var row = csv.PrescriptionCsvRowToStruct();
+
+                    // Process the data for this query
+                    query.ProcessRow(row);
+                }
+            }
+        }
+
+        public void ExecuteQueryTask(Dictionary<string, IPrescriptionsQueryTask> queries)
         {
             using (var csv = new CsvReader(new StreamReader(prescriptionsCsvFile), fileHasHeaders))
             {
@@ -37,9 +53,7 @@ namespace GP.Prescriptions.DataAccess.Readers.Core
                     // Process this data for each query
                     queries.AsParallel().ForAll(q => q.Value.ProcessRow(row));
                 }
-            }
-
-                
+            }  
         }
 
         #endregion

@@ -13,19 +13,24 @@ namespace GP.Prescriptions.Application
     {
         static void Main(string[] args)
         {
+            // Create prescription service instance
             Console.WriteLine("Performing startup...");
-
             var prescriptionService = new PrescriptionsService();
-
             Console.WriteLine("Startup completed.");
+
+            // Find out how many practices there are in London
             Console.WriteLine("How many practices are in London?");
             Console.WriteLine("Processing...");
-
             int practicesInLondon = prescriptionService.GetPracticeCountByRegion(Region.London);
             Console.WriteLine(practicesInLondon);
 
+            // Find out the average national cost of a peppermint oil prescription
             Console.WriteLine("What was the average actual cost of all peppermint oil prescriptions?");
+            Console.WriteLine("Processing...");
+            decimal averagePepermintOilCost = prescriptionService.GetAverageActCostByBnfCode("0102000T0");
+            Console.WriteLine("£" + averagePepermintOilCost.ToString("#.##"));
 
+            Console.ReadLine();
         }
     }
 }

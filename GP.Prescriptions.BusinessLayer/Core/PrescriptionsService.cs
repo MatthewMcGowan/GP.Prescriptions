@@ -10,6 +10,8 @@ namespace GP.Prescriptions.BusinessLayer.Core
     using DataAccess.Readers.Interfaces;
     using BusinessObjects.Classes;
     using Interfaces;
+    using DataAccess.QueryTasks.Interfaces;
+    using DataAccess.QueryTasks.Core;
 
     public class PrescriptionsService : IPrescriptionsService
     {
@@ -56,9 +58,19 @@ namespace GP.Prescriptions.BusinessLayer.Core
             return practices.Dictionary.Count(p => p.Value.Region == region.ToString());
         }
 
-        public decimal GetAverageActualCostByBnfCode(string bnfCode)
+        public decimal GetAverageActCostByBnfCode(string bnfCode)
         {
-            throw new NotImplementedException();
+            // Create query
+            var query = new CalculateAverageActCostByBnfCode(bnfCode);
+
+            // Create csv reader
+            var reader = new PrescriptionsCsvReader();
+
+            // Query csv reader
+            reader.ExecuteQueryTask(query);
+
+            // Return the result
+            return query.Result;
         }
 
         public Dictionary<string, decimal> GetTotalSpendPerPostcode()

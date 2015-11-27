@@ -10,6 +10,8 @@ namespace GP.Prescriptions.DataAccess.Readers.Interfaces
 
     public interface IPrescriptionsCsvReader
     {
-        void ExecuteQueryTasks(Dictionary<string, IPrescriptionsQueryTask> queries);
+        void ExecuteQueryTask(IPrescriptionsQueryTask query);
+
+        void ExecuteQueryTask(Dictionary<string, IPrescriptionsQueryTask> queries);
     }
 }
