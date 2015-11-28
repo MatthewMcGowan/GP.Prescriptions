@@ -75,7 +75,17 @@ namespace GP.Prescriptions.BusinessLayer.Core
 
         public Dictionary<string, decimal> GetTotalSpendPerPostcode()
         {
-            throw new NotImplementedException();
+            // Create query, passing the practices list
+            var query = new CalculateTotalSpendPerPostcode(practices);
+
+            // Create csv reader
+            var reader = new PrescriptionsCsvReader();
+
+            // Query with csv
+            reader.ExecuteQueryTask(query);
+
+            // Return result
+            return query.Result;
         }
 
         public decimal GetAveragePrescriptionPriceByBnfCode(string bnfCode)

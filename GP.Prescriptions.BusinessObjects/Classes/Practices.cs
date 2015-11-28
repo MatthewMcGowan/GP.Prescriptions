@@ -35,11 +35,22 @@ namespace GP.Prescriptions.BusinessObjects.Classes
             }
         }
 
+        #endregion
+
+        #region Public Methods
+
+        public string GetPracticePostcodeByPracticeCode(string practiceCode)
+        {
+            PostcodeRegion data;
+
+            return dictionary.TryGetValue(practiceCode, out data) ? data.Postcode : null;
+        }
+
         public string GetPracticeRegionByPracticeCode(string practiceCode)
         {
             PostcodeRegion data;
 
-            return dictionary.TryGetValue(practiceCode, out data) ? data.Region : string.Empty;
+            return dictionary.TryGetValue(practiceCode, out data) ? data.Region : null;
         }
 
         #endregion

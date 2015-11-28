@@ -18,19 +18,67 @@ namespace GP.Prescriptions.Application
             var prescriptionService = new PrescriptionsService();
             Console.WriteLine("Startup completed.");
 
+            if(askBooleanQuestion("Process in parallel?"))
+            {
+                parallelProcess(prescriptionService);
+            }
+            else
+            {
+                process(prescriptionService);
+            }
+            
+        }
+
+        private static bool askBooleanQuestion(string question)
+        {
+            // Ask user the question
+            Console.WriteLine(question + " [y/n]");
+
+            // Read their response
+            char response = Console.ReadKey().KeyChar;
+
+            // If not correct input, ask again
+            if (response != 'y' && response != 'n')
+            {
+                Console.WriteLine("Incorrect input");
+                askBooleanQuestion(question);
+            }
+
+            // Return true/false based on user input
+            if (response == 'y')
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private static void process(PrescriptionsService prescriptionService)
+        {
             // Find out how many practices there are in London
             Console.WriteLine("How many practices are in London?");
-            Console.WriteLine("Processing...");
             int practicesInLondon = prescriptionService.GetPracticeCountByRegion(Region.London);
             Console.WriteLine(practicesInLondon);
 
             // Find out the average national cost of a peppermint oil prescription
             Console.WriteLine("What was the average actual cost of all peppermint oil prescriptions?");
-            Console.WriteLine("Processing...");
             decimal averagePepermintOilCost = prescriptionService.GetAverageActCostByBnfCode("0102000T0");
             Console.WriteLine("£" + averagePepermintOilCost.ToString("#.##"));
 
+            // Find the 5 highest spending postcodes
+            Console.WriteLine("Which 5 post codes have the highest actual spend, and how much did each spend in total?");
+            // Get postcode spends
+            var totalPostcodeSpends = prescriptionService.GetTotalSpendPerPostcode();
+            // Get top 5
+            var topFive = totalPostcodeSpends.OrderByDescending(p => p.Value).Take(5).ToList();
+            // Write to console
+            topFive.ForEach(p => Console.WriteLine(p.Key + ": " + p.Value));
             Console.ReadLine();
+        }
+
+        private static void parallelProcess(PrescriptionsService prescriptionService)
+        {
+
         }
     }
 }
