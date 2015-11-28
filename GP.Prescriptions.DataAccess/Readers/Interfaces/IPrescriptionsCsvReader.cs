@@ -12,6 +12,6 @@ namespace GP.Prescriptions.DataAccess.Readers.Interfaces
     {
         void ExecuteQueryTask(IPrescriptionsQueryTask query);
 
-        void ExecuteQueryTask(Dictionary<string, IPrescriptionsQueryTask> queries);
+        void ExecuteQueryTask(IEnumerable<IPrescriptionsQueryTask> queries);
     }
 }

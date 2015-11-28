@@ -46,7 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\PrescriptionsCsvReaderExtensions.cs" />
+    <Compile Include="QueryTasks\Core\BaseCalculateAverageActCostByBnfCode.cs" />
     <Compile Include="QueryTasks\Core\CalculateAverageActCostByBnfCode.cs" />
+    <Compile Include="QueryTasks\Core\CalculateAverageActCostByBnfCodeByRegion.cs" />
     <Compile Include="QueryTasks\Core\CalculateTotalSpendPerPostcode.cs" />
     <Compile Include="QueryTasks\Interfaces\IPrescriptionsQueryTask.cs" />
     <Compile Include="Readers\Core\PostcodesCsvReader.cs" />

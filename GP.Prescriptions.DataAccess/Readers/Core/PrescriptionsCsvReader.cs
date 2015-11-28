@@ -12,6 +12,7 @@ namespace GP.Prescriptions.DataAccess.Readers.Core
     using Readers.Interfaces;
     using System.IO;
     using Extensions;
+    using BusinessObjects.Extensions;
 
     public class PrescriptionsCsvReader : IPrescriptionsCsvReader
     {
@@ -40,7 +41,7 @@ namespace GP.Prescriptions.DataAccess.Readers.Core
             }
         }
 
-        public void ExecuteQueryTask(Dictionary<string, IPrescriptionsQueryTask> queries)
+        public void ExecuteQueryTask(IEnumerable<IPrescriptionsQueryTask> queries)
         {
             using (var csv = new CsvReader(new StreamReader(prescriptionsCsvFile), fileHasHeaders))
             {
@@ -51,7 +52,7 @@ namespace GP.Prescriptions.DataAccess.Readers.Core
                     var row = csv.PrescriptionCsvRowToStruct();
 
                     // Process this data for each query
-                    queries.AsParallel().ForAll(q => q.Value.ProcessRow(row));
+                    queries.ForEach(q => q.ProcessRow(row));
                 }
             }  
         }

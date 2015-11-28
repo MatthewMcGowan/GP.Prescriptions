@@ -10,8 +10,8 @@ namespace GP.Prescriptions.BusinessLayer.Core
     using DataAccess.Readers.Interfaces;
     using BusinessObjects.Classes;
     using Interfaces;
-    using DataAccess.QueryTasks.Interfaces;
     using DataAccess.QueryTasks.Core;
+    using DataAccess.QueryTasks.Interfaces;
 
     public class PrescriptionsService : IPrescriptionsService
     {
@@ -19,6 +19,7 @@ namespace GP.Prescriptions.BusinessLayer.Core
 
         private readonly IPracticesCsvReader practicesReader;
         private readonly IPostcodesCsvReader postcodesReader;
+        private readonly IPrescriptionsCsvReader prescriptionsReader;
 
         private Practices practices;
 
@@ -26,11 +27,13 @@ namespace GP.Prescriptions.BusinessLayer.Core
 
         #region Constructors
 
-        public PrescriptionsService(IPracticesCsvReader practicesReader, IPostcodesCsvReader postcodesReader)
+        public PrescriptionsService(IPracticesCsvReader practicesReader, IPostcodesCsvReader postcodesReader,
+            IPrescriptionsCsvReader prescriptionsReader)
         {
             // Set DataAccess objects
             this.practicesReader = practicesReader;
             this.postcodesReader = postcodesReader;
+            this.prescriptionsReader = prescriptionsReader;
 
             // Read the practices & postcodes CSVs to obtain practice data
             var practicesData = practicesReader.GetPracticeData();
@@ -40,7 +43,7 @@ namespace GP.Prescriptions.BusinessLayer.Core
             practices = new Practices(practicesDictionary);
         }
 
-        public PrescriptionsService() : this (new PracticesCsvReader(), new PostcodesCsvReader())
+        public PrescriptionsService() : this (new PracticesCsvReader(), new PostcodesCsvReader(), new PrescriptionsCsvReader())
         {
         }
 
@@ -58,16 +61,13 @@ namespace GP.Prescriptions.BusinessLayer.Core
             return practices.Dictionary.Count(p => p.Value.Region == region.ToString());
         }
 
-        public decimal GetAverageActCostByBnfCode(string bnfCode)
+        public decimal GetAverageActCost(string bnfCode)
         {
             // Create query
             var query = new CalculateAverageActCostByBnfCode(bnfCode);
 
-            // Create csv reader
-            var reader = new PrescriptionsCsvReader();
-
             // Query csv reader
-            reader.ExecuteQueryTask(query);
+            prescriptionsReader.ExecuteQueryTask(query);
 
             // Return the result
             return query.Result;
@@ -78,24 +78,56 @@ namespace GP.Prescriptions.BusinessLayer.Core
             // Create query, passing the practices list
             var query = new CalculateTotalSpendPerPostcode(practices);
 
-            // Create csv reader
-            var reader = new PrescriptionsCsvReader();
-
             // Query with csv
-            reader.ExecuteQueryTask(query);
+            prescriptionsReader.ExecuteQueryTask(query);
 
             // Return result
             return query.Result;
         }
 
-        public decimal GetAveragePrescriptionPriceByBnfCode(string bnfCode)
+        public decimal GetAverageActCostByRegion(string bnfCode, Region region)
         {
-            throw new NotImplementedException();
+            var query = new CalculateAverageActCostByBnfCodeByRegion(bnfCode, region, practices);
+            prescriptionsReader.ExecuteQueryTask(query);
+            return query.Result;
         }
 
-        public Dictionary<Region, decimal> GetAveragePrescriptionPricePerRegionByBnfCode(string bnfCode)
+        public Dictionary<Region, decimal> GetAverageActCostPerRegion(string bnfCode)
         {
-            throw new NotImplementedException();
+            // Create list
+            var queries = new List<CalculateAverageActCostByBnfCodeByRegion>();
+
+            // Create query for each region
+            GetAllRegions().ForEach(r => queries.Add(
+                new CalculateAverageActCostByBnfCodeByRegion(bnfCode, r, practices)));
+
+            // Query csv file
+            prescriptionsReader.ExecuteQueryTask(queries);
+
+            // Return the results
+            var retDictionary = new Dictionary<Region, decimal>();
+            queries.ForEach(q => retDictionary.Add(q.Region, q.Result));
+            return retDictionary;
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private List<Region> GetAllRegions()
+        {
+            return new List<Region>
+            {
+                Region.EastMidlands,
+                Region.EastOfEngland,
+                Region.London,
+                Region.NorthEast,
+                Region.NorthWest,
+                Region.SouthEast,
+                Region.SouthWest,
+                Region.WestMidlands,
+                Region.YorkshireAndTheHumber
+            };
         }
 
         #endregion

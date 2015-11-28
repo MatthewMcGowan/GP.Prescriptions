@@ -18,15 +18,20 @@ namespace GP.Prescriptions.Application
             var prescriptionService = new PrescriptionsService();
             Console.WriteLine("Startup completed.");
 
-            if(askBooleanQuestion("Process in parallel?"))
+            //decimal result = prescriptionService.GetAverageActCostByRegion("0501012G0", Region.London);
+            //Console.WriteLine(result);
+
+
+            if(askBooleanQuestion("Process all at once?"))
             {
-                parallelProcess(prescriptionService);
+                processOnce(prescriptionService);
             }
             else
             {
                 process(prescriptionService);
             }
-            
+
+            Console.ReadLine();
         }
 
         private static bool askBooleanQuestion(string question)
@@ -36,6 +41,7 @@ namespace GP.Prescriptions.Application
 
             // Read their response
             char response = Console.ReadKey().KeyChar;
+            Console.WriteLine();
 
             // If not correct input, ask again
             if (response != 'y' && response != 'n')
@@ -62,7 +68,7 @@ namespace GP.Prescriptions.Application
 
             // Find out the average national cost of a peppermint oil prescription
             Console.WriteLine("What was the average actual cost of all peppermint oil prescriptions?");
-            decimal averagePepermintOilCost = prescriptionService.GetAverageActCostByBnfCode("0102000T0");
+            decimal averagePepermintOilCost = prescriptionService.GetAverageActCost("0102000T0");
             Console.WriteLine("£" + averagePepermintOilCost.ToString("#.##"));
 
             // Find the 5 highest spending postcodes
@@ -72,11 +78,27 @@ namespace GP.Prescriptions.Application
             // Get top 5
             var topFive = totalPostcodeSpends.OrderByDescending(p => p.Value).Take(5).ToList();
             // Write to console
-            topFive.ForEach(p => Console.WriteLine(p.Key + ": " + p.Value));
+            topFive.ForEach(p => Console.WriteLine(p.Key + ": £" + p.Value));
+
+            // Find average price of Flucloxacillin
+            Console.WriteLine("For each region, what was the average price per prescription of Flucloxacillin,"
+                + " and how did this vary from the national mean?");
+            // Get average cost per region
+            var averageFlucloxacillinRegions = prescriptionService.GetAverageActCostPerRegion("0501012G0");
+            // Get average cost for country
+            decimal averageFlucloxacillinNational = prescriptionService.GetAverageActCost("0501012G0");
+            Console.WriteLine("National: £" + averageFlucloxacillinNational);
+            foreach(var r in averageFlucloxacillinRegions)
+            {
+                Console.WriteLine(r.Key + ": £" + r.Value.ToString("#.##") + "; " 
+                    + (r.Value - averageFlucloxacillinNational).ToString("#.##"));
+            }
+
+
             Console.ReadLine();
         }
 
-        private static void parallelProcess(PrescriptionsService prescriptionService)
+        private static void processOnce(PrescriptionsService prescriptionService)
         {
 
         }
