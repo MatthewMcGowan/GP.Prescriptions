@@ -87,7 +87,7 @@ namespace GP.Prescriptions.Application
             var averageFlucloxacillinRegions = prescriptionService.GetAverageActCostPerRegion("0501012G0");
             // Get average cost for country
             decimal averageFlucloxacillinNational = prescriptionService.GetAverageActCost("0501012G0");
-            Console.WriteLine("National: £" + averageFlucloxacillinNational);
+            Console.WriteLine("National: £" + averageFlucloxacillinNational.ToString("#.##"));
             foreach(var r in averageFlucloxacillinRegions)
             {
                 Console.WriteLine(r.Key + ": £" + r.Value.ToString("#.##") + "; " 
