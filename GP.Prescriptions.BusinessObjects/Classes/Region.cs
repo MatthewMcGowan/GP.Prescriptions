@@ -29,6 +29,19 @@ namespace GP.Prescriptions.BusinessObjects.Classes
         public static readonly Region WestMidlands = new Region(7, "West Midlands");
         public static readonly Region YorkshireAndTheHumber = new Region(8, "Yorkshire and The Humber");
 
+        public static readonly List<Region> All = new List<Region>(9)
+                                                      {
+                                                          EastMidlands,
+                                                          EastOfEngland,
+                                                          London,
+                                                          NorthEast,
+                                                          NorthWest,
+                                                          SouthEast,
+                                                          SouthWest,
+                                                          WestMidlands,
+                                                          YorkshireAndTheHumber
+                                                      };
+
         #endregion
 
         #region Constructors
