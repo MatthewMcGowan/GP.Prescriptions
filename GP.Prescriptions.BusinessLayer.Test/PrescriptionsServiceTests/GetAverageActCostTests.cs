@@ -19,6 +19,7 @@ namespace GP.Prescriptions.BusinessLayer.Test.PrescriptionsServiceTests
         [SetUp]
         public void Setup()
         {
+            BaseSetup();
             query = new Mock<ICalcAvgCostByCode>();
         }
 
@@ -27,19 +28,19 @@ namespace GP.Prescriptions.BusinessLayer.Test.PrescriptionsServiceTests
         {
             // Mock query
             query.Setup(q => q.Result).Returns(5M);
-            queryTaskFactory.Setup(f => f.CalcAvgCostByCode(Data.BnfCode1)).Returns(query.Object);
+            QueryTaskFactory.Setup(f => f.CalcAvgCostByCode(Data.BnfCode1)).Returns(query.Object);
             // Mock reader
-            prescriptionsReader.Setup(r => r.ExecuteQueryTask(query.Object));
+            PrescriptionsReader.Setup(r => r.ExecuteQueryTask(query.Object));
             // Create instance of service
-            prescriptionsService = new PrescriptionsService(GetPractices(), prescriptionsReader.Object, queryTaskFactory.Object);
+            PrescriptionsService = new PrescriptionsService(GetPractices(), PrescriptionsReader.Object, QueryTaskFactory.Object);
 
             // Call service
-            var result = prescriptionsService.GetAverageActCost(Data.BnfCode1);
+            var result = PrescriptionsService.GetAverageActCost(Data.BnfCode1);
 
             // Ensure result is as returned by query
             Assert.AreEqual(result, 5M);
             // Ensure query execution was called
-            prescriptionsReader.VerifyAll();
+            PrescriptionsReader.VerifyAll();
         }
     }
 }

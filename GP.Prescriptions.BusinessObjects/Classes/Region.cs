@@ -61,6 +61,11 @@ namespace GP.Prescriptions.BusinessObjects.Classes
             return name;
         }
 
+        public bool Equals(Region obj)
+        {
+            return this.name == obj.name && this.value == obj.value;
+        }
+
         #endregion
     }
 }

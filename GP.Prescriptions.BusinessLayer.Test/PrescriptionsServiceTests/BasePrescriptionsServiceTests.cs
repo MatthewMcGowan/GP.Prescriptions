@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GP.Prescriptions.BusinessLayer.Test.PrescriptionsServiceTests
+﻿namespace GP.Prescriptions.BusinessLayer.Test.PrescriptionsServiceTests
 {
     using Core;
     using DataAccess.Readers.Interfaces;
     using BusinessObjects.Structs;
     using Moq;
-    using GP.Prescriptions.Test.Data;
+    using Prescriptions.Test.Data;
     using System.Collections.Concurrent;
     using BusinessObjects.Classes;
     using DataAccess.QueryTasks.Interfaces;
@@ -19,19 +13,20 @@ namespace GP.Prescriptions.BusinessLayer.Test.PrescriptionsServiceTests
     {
         #region Protected Fields
 
-        protected Mock<IPrescriptionsCsvReader> prescriptionsReader;
-        protected Mock<IPrescriptionsQueryTaskFactory> queryTaskFactory;
+        protected Mock<IPrescriptionsCsvReader> PrescriptionsReader;
+        protected Mock<IPrescriptionsQueryTaskFactory> QueryTaskFactory;
 
-        protected PrescriptionsService prescriptionsService;
+        protected Practices Practices;
+        protected PrescriptionsService PrescriptionsService;
 
         #endregion
 
         #region Constructors
 
-        public BasePrescriptionsServiceTests()
+        protected void BaseSetup()
         {
-            prescriptionsReader = new Mock<IPrescriptionsCsvReader>();
-            queryTaskFactory = new Mock<IPrescriptionsQueryTaskFactory>();
+            PrescriptionsReader = new Mock<IPrescriptionsCsvReader>();
+            QueryTaskFactory = new Mock<IPrescriptionsQueryTaskFactory>();
         }
 
         #endregion
