@@ -22,6 +22,7 @@ namespace GP.Prescriptions.BusinessLayer.Core
         #region Private Fields
 
         private readonly IPrescriptionsCsvReader prescriptionsReader;
+        private readonly IPrescriptionsQueryTaskFactory queryTaskFactory;
 
         private readonly Practices practices;
 
@@ -34,17 +35,20 @@ namespace GP.Prescriptions.BusinessLayer.Core
         /// </summary>
         /// <param name="practices">The practices.</param>
         /// <param name="prescriptionsReader">The prescriptions reader.</param>
-        public PrescriptionsService(Practices practices, IPrescriptionsCsvReader prescriptionsReader)
+        public PrescriptionsService(Practices practices, IPrescriptionsCsvReader prescriptionsReader, 
+            IPrescriptionsQueryTaskFactory queryTaskFactory)
         {
-            // Set DataAccess objects
+            // Set objects
             this.practices = practices;
             this.prescriptionsReader = prescriptionsReader;
+            this.queryTaskFactory = queryTaskFactory;
         }
 
         /// <summary>
         /// Initialises a new instance of the <see cref="PrescriptionsService"/> class.
         /// </summary>
-        public PrescriptionsService(Practices practices) : this (practices, new PrescriptionsCsvReader())
+        public PrescriptionsService(Practices practices) 
+            : this (practices, new PrescriptionsCsvReader(), new PrescriptionsQueryTaskFactory())
         {
         }
 
@@ -58,16 +62,6 @@ namespace GP.Prescriptions.BusinessLayer.Core
         }
 
         /// <summary>
-        /// Gets the practice count by region.
-        /// </summary>
-        /// <param name="region">The region.</param>
-        /// <returns></returns>
-        public int GetPracticeCountByRegion(Region region)
-        {
-            return practices.Dictionary.Count(p => p.Value.Region == region.ToString());
-        }
-
-        /// <summary>
         /// Gets the average actual cost of a prescription by BNF code.
         /// </summary>
         /// <param name="bnfCode">The BNF code.</param>
@@ -75,7 +69,7 @@ namespace GP.Prescriptions.BusinessLayer.Core
         public decimal GetAverageActCost(string bnfCode)
         {
             // Create query
-            var query = new CalculateAverageActCostByBnfCode(bnfCode);
+            var query = queryTaskFactory.CalcAvgCostByCode(bnfCode);
 
             // Query csv reader
             prescriptionsReader.ExecuteQueryTask(query);
@@ -91,25 +85,12 @@ namespace GP.Prescriptions.BusinessLayer.Core
         public Dictionary<string, decimal> GetTotalSpendPerPostcode()
         {
             // Create query, passing the practices list
-            var query = new CalculateTotalSpendPerPostcode(practices);
+            var query = queryTaskFactory.CalcTotalSpendPerPostcode(practices);
 
             // Query with csv
             prescriptionsReader.ExecuteQueryTask(query);
 
             // Return result
-            return query.Result;
-        }
-
-        /// <summary>
-        /// Gets the average actual cost of a prescription by BNF code for a particular region.
-        /// </summary>
-        /// <param name="bnfCode">The BNF code.</param>
-        /// <param name="region">The region.</param>
-        /// <returns>The average cost for a prescription for this region.</returns>
-        public decimal GetAverageActCostByRegion(string bnfCode, Region region)
-        {
-            var query = new CalculateAverageActCostByBnfCodeByRegion(bnfCode, region, practices);
-            prescriptionsReader.ExecuteQueryTask(query);
             return query.Result;
         }
 
@@ -121,11 +102,11 @@ namespace GP.Prescriptions.BusinessLayer.Core
         public Dictionary<Region, decimal> GetAverageActCostPerRegion(string bnfCode)
         {
             // Create list
-            var queries = new List<CalculateAverageActCostByBnfCodeByRegion>();
+            var queries = new List<ICalcAvgCostByCodeByRegion>();
 
             // Create query for each region
             Region.All.ForEach(r => queries.Add(
-                new CalculateAverageActCostByBnfCodeByRegion(bnfCode, r, practices)));
+                queryTaskFactory.CalcAvgCostByCodeByRegion(bnfCode, r, practices)));
 
             // Query csv file
             prescriptionsReader.ExecuteQueryTask(queries);

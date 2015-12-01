@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace GP.Prescriptions.BusinessLayer.Core
 {
-    using System.Runtime.CompilerServices;
+    using BusinessObjects.Classes;
+    using DataAccess.Readers.Core;
+    using DataAccess.Readers.Interfaces;
+    using Interfaces;
 
-    using GP.Prescriptions.BusinessObjects.Classes;
-    using GP.Prescriptions.DataAccess.Readers.Core;
-    using GP.Prescriptions.DataAccess.Readers.Interfaces;
-
-    public class PracticesService
+    public class PracticesService : IPracticesService
     {
         #region Private Fields
 
@@ -32,6 +31,8 @@ namespace GP.Prescriptions.BusinessLayer.Core
         {
             this.practicesReader = practicesReader;
             this.postcodesReader = postcodesReader;
+
+            InitialisePractices();
         }
 
         public PracticesService()
@@ -41,13 +42,32 @@ namespace GP.Prescriptions.BusinessLayer.Core
 
         #endregion
 
+        #region Public Properties
+
+        public Practices Practices { get; private set; }
+
+        #endregion
+
         #region Public Methods
+
+        /// <summary>
+        /// Gets the practice count by region.
+        /// </summary>
+        /// <param name="region">The region.</param>
+        /// <returns></returns>
+        public int GetPracticeCountByRegion(Region region)
+        {
+            return Practices.Dictionary.Count(p => p.Value.Region == region.ToString());
+        }
+
+        #endregion
+
+        #region Private Methods
 
         /// <summary>
         /// Gets all practices, along with their regions.
         /// </summary>
-        /// <returns>Practices object.</returns>
-        public Practices GetAllPractices()
+        private void InitialisePractices()
         {
             // Use the practices reader to obtain practice data
             var practicesData = this.practicesReader.GetPracticeData();
@@ -56,7 +76,7 @@ namespace GP.Prescriptions.BusinessLayer.Core
             var practicesDictionary = this.postcodesReader.GetPracticeDictionary(practicesData);
 
             // Return practices object
-            return new Practices(practicesDictionary);
+            Practices = new Practices(practicesDictionary);
         }
 
         #endregion

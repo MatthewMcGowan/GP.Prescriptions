@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Core\PracticesService.cs" />
     <Compile Include="Core\PrescriptionsService.cs" />
+    <Compile Include="Interfaces\IPracticesService.cs" />
     <Compile Include="Interfaces\IPrescriptionsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

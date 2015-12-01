@@ -10,7 +10,7 @@ namespace GP.Prescriptions.DataAccess.QueryTasks.Core
     using BusinessObjects.Structs;
     using Interfaces;
 
-    public class CalculateAverageActCostByBnfCodeByRegion : BaseCalculateAverageActCostByBnfCode, IPrescriptionsQueryTask
+    public class CalcAvgCostByCodeByRegion : BaseCalcAvgCostByCode, ICalcAvgCostByCodeByRegion
     {
         #region Private Fields
 
@@ -20,7 +20,7 @@ namespace GP.Prescriptions.DataAccess.QueryTasks.Core
 
         #region Constructors
 
-        public CalculateAverageActCostByBnfCodeByRegion(string bnfCode, Region region, Practices practices) : base(bnfCode)
+        public CalcAvgCostByCodeByRegion(string bnfCode, Region region, Practices practices) : base(bnfCode)
         {
             Region = region;
             this.practices = practices;
@@ -28,15 +28,13 @@ namespace GP.Prescriptions.DataAccess.QueryTasks.Core
 
         #endregion
 
-        #region Public Methods
+        #region Public Properties
 
         public Region Region { get; private set; }
 
         #endregion
 
         #region Public Methods
-
-
 
         public override void ProcessRow(PrescriptionData row)
         {

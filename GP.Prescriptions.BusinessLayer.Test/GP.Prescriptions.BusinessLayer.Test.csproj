@@ -74,8 +74,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="PracticesServiceTests\BasePracticesServiceTests.cs" />
     <Compile Include="PrescriptionsServiceTests\BasePrescriptionsServiceTests.cs" />
-    <Compile Include="PrescriptionsServiceTests\GetPracticeCountByRegionTests.cs" />
+    <Compile Include="PracticesServiceTests\GetPracticeCountByRegionTests.cs" />
+    <Compile Include="PrescriptionsServiceTests\GetAverageActCostTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -99,6 +101,7 @@
       <Name>GP.Prescriptions.Test.Data</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

@@ -13,22 +13,19 @@ namespace GP.Prescriptions.Application
     {
         static void Main(string[] args)
         {
-            // Create prescription service instance
             Console.WriteLine("Performing startup...");
-            var prescriptionService = new PrescriptionsService();
+            //Create instances of practice service and prescription service
+            var practicesService = new PracticesService();
+            var prescriptionService = new PrescriptionsService(practicesService.Practices);
             Console.WriteLine("Startup completed.");
-
-            //decimal result = prescriptionService.GetAverageActCostByRegion("0501012G0", Region.London);
-            //Console.WriteLine(result);
-
 
             if(askBooleanQuestion("Process all at once?"))
             {
-                processOnce(prescriptionService);
+                processOnce(practicesService, prescriptionService);
             }
             else
             {
-                process(prescriptionService);
+                process(practicesService, prescriptionService);
             }
 
             Console.ReadLine();
@@ -59,11 +56,11 @@ namespace GP.Prescriptions.Application
             return false;
         }
 
-        private static void process(PrescriptionsService prescriptionService)
+        private static void process(PracticesService practicesService, PrescriptionsService prescriptionService)
         {
             // Find out how many practices there are in London
             Console.WriteLine("How many practices are in London?");
-            int practicesInLondon = prescriptionService.GetPracticeCountByRegion(Region.London);
+            int practicesInLondon = practicesService.GetPracticeCountByRegion(Region.London);
             Console.WriteLine(practicesInLondon);
 
             // Find out the average national cost of a peppermint oil prescription
@@ -98,7 +95,7 @@ namespace GP.Prescriptions.Application
             Console.ReadLine();
         }
 
-        private static void processOnce(PrescriptionsService prescriptionService)
+        private static void processOnce(PracticesService practicesService, PrescriptionsService prescriptionService)
         {
 
         }

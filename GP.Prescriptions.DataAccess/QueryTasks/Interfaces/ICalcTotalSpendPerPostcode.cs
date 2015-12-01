@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace GP.Prescriptions.DataAccess.QueryTasks.Interfaces
 {
-    using BusinessObjects.Structs;
-
-    public interface IPrescriptionsQueryTask
+    public interface ICalcTotalSpendPerPostcode : IPrescriptionsQueryTask
     {
-        void ProcessRow(PrescriptionData row);
+        Dictionary<string, decimal> Result { get; }
     }
 }

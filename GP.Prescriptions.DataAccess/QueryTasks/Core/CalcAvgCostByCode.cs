@@ -9,11 +9,11 @@ namespace GP.Prescriptions.DataAccess.QueryTasks.Core
     using BusinessObjects.Structs;
     using Interfaces;
 
-    public class CalculateAverageActCostByBnfCode : BaseCalculateAverageActCostByBnfCode, IPrescriptionsQueryTask
+    public class CalcAvgCostByCode : BaseCalcAvgCostByCode, ICalcAvgCostByCode
     {
         #region Constructors
 
-        public CalculateAverageActCostByBnfCode(string bnfCode) : base(bnfCode)
+        public CalcAvgCostByCode(string bnfCode) : base(bnfCode)
         {
         }
 

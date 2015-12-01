@@ -10,7 +10,7 @@ namespace GP.Prescriptions.DataAccess.QueryTasks.Core
     using BusinessObjects.Classes;
     using Interfaces;
 
-    public class CalculateTotalSpendPerPostcode : IPrescriptionsQueryTask
+    public class CalcTotalSpendPerPostcode : ICalcTotalSpendPerPostcode
     {
         #region Private Fields
 
@@ -22,7 +22,7 @@ namespace GP.Prescriptions.DataAccess.QueryTasks.Core
 
         #region Constructors
 
-        public CalculateTotalSpendPerPostcode(Practices practices)
+        public CalcTotalSpendPerPostcode(Practices practices)
         {
             // Set the practices
             this.practices = practices;

@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 namespace GP.Prescriptions.DataAccess.QueryTasks.Core
 {
     using BusinessObjects.Structs;
-    using Interfaces;
 
-    public abstract class BaseCalculateAverageActCostByBnfCode
+    public abstract class BaseCalcAvgCostByCode
     {
         #region Protected Fields
 
@@ -22,7 +21,7 @@ namespace GP.Prescriptions.DataAccess.QueryTasks.Core
 
         #region Constructors
 
-        protected BaseCalculateAverageActCostByBnfCode(string bnfCode)
+        protected BaseCalcAvgCostByCode(string bnfCode)
         {
             this.bnfCode = bnfCode;
 

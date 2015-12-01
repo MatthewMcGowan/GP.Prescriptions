@@ -46,11 +46,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\PrescriptionsCsvReaderExtensions.cs" />
-    <Compile Include="QueryTasks\Core\BaseCalculateAverageActCostByBnfCode.cs" />
-    <Compile Include="QueryTasks\Core\CalculateAverageActCostByBnfCode.cs" />
-    <Compile Include="QueryTasks\Core\CalculateAverageActCostByBnfCodeByRegion.cs" />
-    <Compile Include="QueryTasks\Core\CalculateTotalSpendPerPostcode.cs" />
+    <Compile Include="QueryTasks\Core\BaseCalcAvgCostByCode.cs" />
+    <Compile Include="QueryTasks\Core\CalcAvgCostByCode.cs" />
+    <Compile Include="QueryTasks\Core\CalcAvgCostByCodeByRegion.cs" />
+    <Compile Include="QueryTasks\Core\CalcTotalSpendPerPostcode.cs" />
+    <Compile Include="QueryTasks\Core\PrescriptionsQueryTaskFactory.cs" />
+    <Compile Include="QueryTasks\Interfaces\ICalcAvgCostByCode.cs" />
+    <Compile Include="QueryTasks\Interfaces\ICalcAvgCostByCodeByRegion.cs" />
+    <Compile Include="QueryTasks\Interfaces\ICalcTotalSpendPerPostcode.cs" />
     <Compile Include="QueryTasks\Interfaces\IPrescriptionsQueryTask.cs" />
+    <Compile Include="QueryTasks\Interfaces\IPrescriptionsQueryTaskFactory.cs" />
     <Compile Include="Readers\Core\PostcodesCsvReader.cs" />
     <Compile Include="Readers\Core\PracticesCsvReader.cs" />
     <Compile Include="Extensions\ConcurrentDictionaryExtensions.cs" />

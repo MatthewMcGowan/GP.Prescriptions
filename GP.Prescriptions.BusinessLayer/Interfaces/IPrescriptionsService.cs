@@ -12,8 +12,6 @@ namespace GP.Prescriptions.BusinessLayer.Interfaces
     {
         void GetAllAnalysis();
 
-        int GetPracticeCountByRegion(Region region);
-
         decimal GetAverageActCost(string bnfCode);
 
         Dictionary<string, decimal> GetTotalSpendPerPostcode();

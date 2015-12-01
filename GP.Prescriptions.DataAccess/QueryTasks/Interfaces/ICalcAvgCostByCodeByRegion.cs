@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace GP.Prescriptions.DataAccess.QueryTasks.Interfaces
 {
-    using BusinessObjects.Structs;
+    using BusinessObjects.Classes;
 
-    public interface IPrescriptionsQueryTask
+    public interface ICalcAvgCostByCodeByRegion : IPrescriptionsQueryTask
     {
-        void ProcessRow(PrescriptionData row);
+        decimal Result { get; }
+
+        Region Region { get; }
     }
 }
