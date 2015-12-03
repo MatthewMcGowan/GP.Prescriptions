@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Configuration;
 
 namespace GP.Prescriptions.DataAccess.Readers.Core
 {
     using LumenWorks.Framework.IO.Csv;
-    using QueryTasks.Interfaces;
     using Readers.Interfaces;
     using System.IO;
     using Extensions;
     using BusinessObjects.Extensions;
+
+    using GP.Prescriptions.BusinessObjects.QueryTasks.Interfaces;
 
     public class PrescriptionsCsvReader : IPrescriptionsCsvReader
     {

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace GP.Prescriptions.Application
 {
-    using BusinessLayer.Core;
     using BusinessObjects.Classes;
+
+    using GP.Prescriptions.BusinessLayer.Services.Core;
 
     class Program
     {

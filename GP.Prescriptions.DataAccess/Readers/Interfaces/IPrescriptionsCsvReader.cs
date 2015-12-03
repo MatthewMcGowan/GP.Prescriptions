@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace GP.Prescriptions.DataAccess.Readers.Interfaces
 {
-    using GP.Prescriptions.DataAccess.QueryTasks.Interfaces;
+    using GP.Prescriptions.BusinessObjects.QueryTasks.Interfaces;
 
     public interface IPrescriptionsCsvReader
     {

@@ -40,10 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\PracticesService.cs" />
-    <Compile Include="Core\PrescriptionsService.cs" />
-    <Compile Include="Interfaces\IPracticesService.cs" />
-    <Compile Include="Interfaces\IPrescriptionsService.cs" />
+    <Compile Include="Services\Core\PracticesService.cs" />
+    <Compile Include="Services\Core\PrescriptionsService.cs" />
+    <Compile Include="Services\Interfaces\IPracticesService.cs" />
+    <Compile Include="Services\Interfaces\IPrescriptionsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

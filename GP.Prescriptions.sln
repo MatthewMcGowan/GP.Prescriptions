@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GP.Prescriptions.DataAccess
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GP.Prescriptions.Test.Data", "GP.Prescriptions.Test.Data\GP.Prescriptions.Test.Data.csproj", "{1D329EBA-0503-45E2-8080-52889D0DAA4F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GP.Prescriptions.BusinessObjects.Test", "GP.Prescriptions.BusinessObjects.Test\GP.Prescriptions.BusinessObjects.Test.csproj", "{E142D112-FF33-4B0A-8B10-213FA2D368D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{1D329EBA-0503-45E2-8080-52889D0DAA4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D329EBA-0503-45E2-8080-52889D0DAA4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D329EBA-0503-45E2-8080-52889D0DAA4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E142D112-FF33-4B0A-8B10-213FA2D368D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E142D112-FF33-4B0A-8B10-213FA2D368D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E142D112-FF33-4B0A-8B10-213FA2D368D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E142D112-FF33-4B0A-8B10-213FA2D368D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,5 +73,6 @@ Global
 		{DFAF11B2-60B4-4050-89EC-E3B94FC50134} = {34370BF8-CFC4-47FF-B78E-9CB14EA249CA}
 		{AD3D42F1-BC9D-446C-9D90-7FADA0BEE19A} = {34370BF8-CFC4-47FF-B78E-9CB14EA249CA}
 		{1D329EBA-0503-45E2-8080-52889D0DAA4F} = {34370BF8-CFC4-47FF-B78E-9CB14EA249CA}
+		{E142D112-FF33-4B0A-8B10-213FA2D368D7} = {34370BF8-CFC4-47FF-B78E-9CB14EA249CA}
 	EndGlobalSection
 EndGlobal
