@@ -1,8 +1,8 @@
-﻿namespace GP.Prescriptions.BusinessObjects.QueryTasks.Interfaces
+﻿namespace GP.Prescriptions.BusinessObjects.Queries.Interfaces
 {
     using GP.Prescriptions.BusinessObjects.Structs;
 
-    public interface IPrescriptionsQueryTask
+    public interface IPrescriptionsQuery
     {
         void ProcessRow(PrescriptionData row);
     }

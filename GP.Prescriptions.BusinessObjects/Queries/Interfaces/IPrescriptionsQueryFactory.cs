@@ -1,8 +1,8 @@
-﻿namespace GP.Prescriptions.BusinessObjects.QueryTasks.Interfaces
+﻿namespace GP.Prescriptions.BusinessObjects.Queries.Interfaces
 {
     using GP.Prescriptions.BusinessObjects.Classes;
 
-    public interface IPrescriptionsQueryTaskFactory
+    public interface IPrescriptionsQueryFactory
     {
         ICalcAvgCostByCode CalcAvgCostByCode(string bnfCode);
 

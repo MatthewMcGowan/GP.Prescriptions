@@ -4,7 +4,7 @@
 
     using GP.Prescriptions.BusinessLayer.Services.Core;
     using GP.Prescriptions.BusinessObjects.Classes;
-    using GP.Prescriptions.BusinessObjects.QueryTasks.Interfaces;
+    using GP.Prescriptions.BusinessObjects.Queries.Interfaces;
     using GP.Prescriptions.BusinessObjects.Structs;
     using GP.Prescriptions.DataAccess.Readers.Interfaces;
     using GP.Prescriptions.Test.Data;
@@ -16,7 +16,7 @@
         #region Protected Fields
 
         protected Mock<IPrescriptionsCsvReader> PrescriptionsReader;
-        protected Mock<IPrescriptionsQueryTaskFactory> QueryTaskFactory;
+        protected Mock<IPrescriptionsQueryFactory> QueryFactory;
 
         protected Practices Practices;
         protected PrescriptionsService PrescriptionsService;
@@ -28,7 +28,7 @@
         protected void BaseSetup()
         {
             PrescriptionsReader = new Mock<IPrescriptionsCsvReader>();
-            QueryTaskFactory = new Mock<IPrescriptionsQueryTaskFactory>();
+            QueryFactory = new Mock<IPrescriptionsQueryFactory>();
         }
 
         #endregion

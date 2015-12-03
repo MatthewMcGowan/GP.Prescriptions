@@ -59,12 +59,23 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QueryTasks\CalcAvgCostByCodeByRegionTests.cs" />
-    <Compile Include="QueryTasks\CalcAvgCostByCodeTests.cs" />
-    <Compile Include="QueryTasks\CalcTotalSpendPerPostcodeTests.cs" />
+    <Compile Include="Queries\BaseQueriesTests.cs" />
+    <Compile Include="Queries\CalcAvgCostByCodeByRegionTests.cs" />
+    <Compile Include="Queries\CalcAvgCostByCodeTests.cs" />
+    <Compile Include="Queries\CalcTotalSpendPerPostcodeTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GP.Prescriptions.BusinessObjects\GP.Prescriptions.BusinessObjects.csproj">
+      <Project>{b4d55cd6-3368-4bf5-9d55-a8fdb2d23d51}</Project>
+      <Name>GP.Prescriptions.BusinessObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GP.Prescriptions.Test.Data\GP.Prescriptions.Test.Data.csproj">
+      <Project>{1d329eba-0503-45e2-8080-52889d0daa4f}</Project>
+      <Name>GP.Prescriptions.Test.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

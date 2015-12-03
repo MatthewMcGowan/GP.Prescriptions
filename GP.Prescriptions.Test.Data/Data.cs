@@ -19,5 +19,13 @@ namespace GP.Prescriptions.Test.Data
         public const string Region2 = "North East";
         public const string BnfCode1 = "0703010F0";
         public const string BnfCode2 = "0101010G0";
+        public const int ItemsZero = 0;
+        public const int Items1 = 2;
+        public const int Items2 = 3;
+        public const decimal CostZero = 0M;
+        public const decimal Cost1 = 2M;
+        public const decimal Cost2 = 3M;
+        public const decimal Cost3 = 5M;
+        public const decimal Cost4 = 8M;
     }
 }

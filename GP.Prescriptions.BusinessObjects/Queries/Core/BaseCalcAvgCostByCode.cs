@@ -1,4 +1,4 @@
-﻿namespace GP.Prescriptions.BusinessObjects.QueryTasks.Core
+﻿namespace GP.Prescriptions.BusinessObjects.Queries.Core
 {
     using GP.Prescriptions.BusinessObjects.Structs;
 
@@ -31,7 +31,7 @@
         {
             get
             {
-                return totalCost / totalSold;
+                return totalSold > 0 ? totalCost / totalSold : 0M;
             }
         }
 
@@ -44,7 +44,7 @@
             if (row.BNFCode == bnfCode)
             {
                 totalSold += row.Items;
-                totalCost += row.NIC;
+                totalCost += row.ActualCost;
             }
         }
 

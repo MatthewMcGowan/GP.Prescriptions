@@ -4,7 +4,7 @@
 
     using GP.Prescriptions.BusinessLayer.Services.Core;
     using GP.Prescriptions.BusinessObjects.Classes;
-    using GP.Prescriptions.BusinessObjects.QueryTasks.Interfaces;
+    using GP.Prescriptions.BusinessObjects.Queries.Interfaces;
 
     using Moq;
 
@@ -35,11 +35,11 @@
                                };
             // Mock query
             query.Setup(q => q.Result).Returns(regionSpends);
-            QueryTaskFactory.Setup(f => f.CalcTotalSpendPerPostcode(Practices)).Returns(query.Object);
+            QueryFactory.Setup(f => f.CalcTotalSpendPerPostcode(Practices)).Returns(query.Object);
             // Mock reader
-            PrescriptionsReader.Setup(r => r.ExecuteQueryTask(query.Object));
+            PrescriptionsReader.Setup(r => r.ExecuteQuery(query.Object));
             // Instantiate service
-            PrescriptionsService = new PrescriptionsService(Practices, PrescriptionsReader.Object, QueryTaskFactory.Object);
+            PrescriptionsService = new PrescriptionsService(Practices, PrescriptionsReader.Object, QueryFactory.Object);
 
             // Call method
             var result = PrescriptionsService.GetTotalSpendPerPostcode();

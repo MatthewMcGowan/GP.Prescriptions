@@ -5,7 +5,7 @@
 
     using GP.Prescriptions.BusinessLayer.Services.Core;
     using GP.Prescriptions.BusinessObjects.Classes;
-    using GP.Prescriptions.BusinessObjects.QueryTasks.Interfaces;
+    using GP.Prescriptions.BusinessObjects.Queries.Interfaces;
     using GP.Prescriptions.Test.Data;
 
     using Moq;
@@ -31,14 +31,14 @@
                 var query = new Mock<ICalcAvgCostByCodeByRegion>();
                 query.Setup(q => q.Region).Returns(r);
                 query.Setup(q => q.Result).Returns(queryReturnValue++);
-                QueryTaskFactory.Setup(
+                QueryFactory.Setup(
                     f => f.CalcAvgCostByCodeByRegion(Data.BnfCode1, It.Is<Region>(m => m.Equals(r)), Practices))
                     .Returns(query.Object);
             }
             // Mock reader
-            PrescriptionsReader.Setup(r => r.ExecuteQueryTask(It.IsAny<List<ICalcAvgCostByCodeByRegion>>()));
+            PrescriptionsReader.Setup(r => r.ExecuteQuery(It.IsAny<List<ICalcAvgCostByCodeByRegion>>()));
             // Instantiate service
-            PrescriptionsService = new PrescriptionsService(Practices, PrescriptionsReader.Object, QueryTaskFactory.Object);
+            PrescriptionsService = new PrescriptionsService(Practices, PrescriptionsReader.Object, QueryFactory.Object);
 
             // Call method
             var result = PrescriptionsService.GetAverageActCostPerRegion(Data.BnfCode1);

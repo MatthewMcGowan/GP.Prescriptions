@@ -2,12 +2,12 @@
 
 namespace GP.Prescriptions.DataAccess.Readers.Interfaces
 {
-    using GP.Prescriptions.BusinessObjects.QueryTasks.Interfaces;
+    using GP.Prescriptions.BusinessObjects.Queries.Interfaces;
 
     public interface IPrescriptionsCsvReader
     {
-        void ExecuteQueryTask(IPrescriptionsQueryTask query);
+        void ExecuteQuery(IPrescriptionsQuery query);
 
-        void ExecuteQueryTask(IEnumerable<IPrescriptionsQueryTask> queries);
+        void ExecuteQuery(IEnumerable<IPrescriptionsQuery> queries);
     }
 }

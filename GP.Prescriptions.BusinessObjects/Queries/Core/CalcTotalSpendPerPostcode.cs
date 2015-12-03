@@ -1,11 +1,11 @@
-﻿namespace GP.Prescriptions.BusinessObjects.QueryTasks.Core
+﻿namespace GP.Prescriptions.BusinessObjects.Queries.Core
 {
     using System.Collections.Generic;
 
     using GP.Prescriptions.BusinessObjects.Classes;
     using GP.Prescriptions.BusinessObjects.Structs;
 
-    using ICalcTotalSpendPerPostcode = GP.Prescriptions.BusinessObjects.QueryTasks.Interfaces.ICalcTotalSpendPerPostcode;
+    using ICalcTotalSpendPerPostcode = GP.Prescriptions.BusinessObjects.Queries.Interfaces.ICalcTotalSpendPerPostcode;
 
     public class CalcTotalSpendPerPostcode : Interfaces.ICalcTotalSpendPerPostcode
     {

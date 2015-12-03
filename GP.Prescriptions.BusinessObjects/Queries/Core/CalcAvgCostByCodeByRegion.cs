@@ -1,9 +1,9 @@
-﻿namespace GP.Prescriptions.BusinessObjects.QueryTasks.Core
+﻿namespace GP.Prescriptions.BusinessObjects.Queries.Core
 {
     using GP.Prescriptions.BusinessObjects.Classes;
     using GP.Prescriptions.BusinessObjects.Structs;
 
-    using ICalcAvgCostByCodeByRegion = GP.Prescriptions.BusinessObjects.QueryTasks.Interfaces.ICalcAvgCostByCodeByRegion;
+    using ICalcAvgCostByCodeByRegion = GP.Prescriptions.BusinessObjects.Queries.Interfaces.ICalcAvgCostByCodeByRegion;
 
     public class CalcAvgCostByCodeByRegion : BaseCalcAvgCostByCode, Interfaces.ICalcAvgCostByCodeByRegion
     {

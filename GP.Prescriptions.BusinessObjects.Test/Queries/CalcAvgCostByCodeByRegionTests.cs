@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GP.Prescriptions.DataAccess.Test.QueryTasks
+namespace GP.Prescriptions.BusinessObjects.Test.Queries
 {
     using NUnit.Framework;
     using Moq;
 
     [TestFixture]
-    public class CalcAvgCostByCodeTests
+    class CalcAvgCostByCodeByRegionTests : BaseQueriesTests
     {
+
     }
 }

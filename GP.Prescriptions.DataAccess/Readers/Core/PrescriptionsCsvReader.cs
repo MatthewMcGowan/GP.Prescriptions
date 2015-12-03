@@ -10,7 +10,7 @@ namespace GP.Prescriptions.DataAccess.Readers.Core
     using Extensions;
     using BusinessObjects.Extensions;
 
-    using GP.Prescriptions.BusinessObjects.QueryTasks.Interfaces;
+    using GP.Prescriptions.BusinessObjects.Queries.Interfaces;
 
     public class PrescriptionsCsvReader : IPrescriptionsCsvReader
     {
@@ -23,7 +23,7 @@ namespace GP.Prescriptions.DataAccess.Readers.Core
 
         #region Public Methods
 
-        public void ExecuteQueryTask(IPrescriptionsQueryTask query)
+        public void ExecuteQuery(IPrescriptionsQuery query)
         {
             using (var csv = new CsvReader(new StreamReader(prescriptionsCsvFile), fileHasHeaders))
             {
@@ -39,7 +39,7 @@ namespace GP.Prescriptions.DataAccess.Readers.Core
             }
         }
 
-        public void ExecuteQueryTask(IEnumerable<IPrescriptionsQueryTask> queries)
+        public void ExecuteQuery(IEnumerable<IPrescriptionsQuery> queries)
         {
             using (var csv = new CsvReader(new StreamReader(prescriptionsCsvFile), fileHasHeaders))
             {
