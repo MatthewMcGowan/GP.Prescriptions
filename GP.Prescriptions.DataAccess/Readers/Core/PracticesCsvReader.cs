@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Configuration;
-using GP.Prescriptions.BusinessObjects.Structs;
-using LumenWorks.Framework.IO.Csv;
-using System.IO;
-using GP.Prescriptions.DataAccess.Readers.Interfaces;
-
-namespace GP.Prescriptions.DataAccess.Readers.Core
+﻿namespace GP.Prescriptions.DataAccess.Readers.Core
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Configuration;
+    using BusinessObjects.Structs;
+    using LumenWorks.Framework.IO.Csv;
+    using System.IO;
+    using Interfaces;
+
     public class PracticesCsvReader : IPracticesCsvReader
     {
         #region Private Fields
@@ -26,7 +23,7 @@ namespace GP.Prescriptions.DataAccess.Readers.Core
         {
             var practicesData = new List<PracticeData>();
 
-            using (var csv = new CsvReader(new StreamReader(practiceCsvFile), false))
+            using (var csv = new CsvReader(new StreamReader(practiceCsvFile), fileHasHeaders))
             {
                 while (csv.ReadNextRecord())
                 {

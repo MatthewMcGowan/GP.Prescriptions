@@ -48,7 +48,6 @@
     <Compile Include="Extensions\PrescriptionsCsvReaderExtensions.cs" />
     <Compile Include="Readers\Core\PostcodesCsvReader.cs" />
     <Compile Include="Readers\Core\PracticesCsvReader.cs" />
-    <Compile Include="Extensions\ConcurrentDictionaryExtensions.cs" />
     <Compile Include="Readers\Core\PrescriptionsCsvReader.cs" />
     <Compile Include="Readers\Interfaces\IPostcodesCsvReader.cs" />
     <Compile Include="Readers\Interfaces\IPracticesCsvReader.cs" />

@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\ConcurrentDictionaryExtensions.cs" />
     <Compile Include="Objects\Practices.cs" />
     <Compile Include="Objects\Region.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />

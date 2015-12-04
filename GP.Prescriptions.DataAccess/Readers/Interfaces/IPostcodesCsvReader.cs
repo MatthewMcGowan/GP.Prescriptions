@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GP.Prescriptions.DataAccess.Readers.Interfaces
+﻿namespace GP.Prescriptions.DataAccess.Readers.Interfaces
 {
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+
     using BusinessObjects.Structs;
 
     public interface IPostcodesCsvReader

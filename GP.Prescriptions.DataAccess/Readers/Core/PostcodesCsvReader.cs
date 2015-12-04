@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Configuration;
-
-namespace GP.Prescriptions.DataAccess.Readers.Core
+﻿namespace GP.Prescriptions.DataAccess.Readers.Core
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Configuration;
+    using System.Collections.Concurrent;
+    using System.IO;
+
     using BusinessObjects.Structs;
     using Interfaces;
     using LumenWorks.Framework.IO.Csv;
-    using System.Collections.Concurrent;
-    using System.IO;
-    using Extensions;
+    using BusinessObjects.Extensions;
 
     public class PostcodesCsvReader : IPostcodesCsvReader
     {
@@ -68,7 +66,7 @@ namespace GP.Prescriptions.DataAccess.Readers.Core
                     }
                     // If value has been moved past without being found it's not present in postcode file.
                     // This indicates an invalid postcode, and is treated as null.
-                    else if (relativePosition < 0)
+                    if (relativePosition < 0)
                     {
                         do
                         {

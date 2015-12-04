@@ -1,13 +1,9 @@
-﻿using GP.Prescriptions.BusinessObjects.Structs;
-using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GP.Prescriptions.DataAccess.Extensions
+﻿namespace GP.Prescriptions.BusinessObjects.Extensions
 {
+    using System.Collections.Concurrent;
+
+    using Structs;
+
     public static class ConcurrentDictionaryExtensions
     {
         public static void TryAdd(this ConcurrentDictionary<string, PostcodeRegion> dictionary, 
