@@ -2,10 +2,10 @@
 {
     using System.Linq;
 
-    using GP.Prescriptions.BusinessLayer.Services.Interfaces;
-    using GP.Prescriptions.BusinessObjects.Classes;
-    using GP.Prescriptions.DataAccess.Readers.Core;
-    using GP.Prescriptions.DataAccess.Readers.Interfaces;
+    using Interfaces;
+    using BusinessObjects.Classes;
+    using DataAccess.Readers.Core;
+    using DataAccess.Readers.Interfaces;
 
     public class PracticesService : IPracticesService
     {

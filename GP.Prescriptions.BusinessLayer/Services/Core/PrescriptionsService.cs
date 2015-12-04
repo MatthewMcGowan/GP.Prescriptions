@@ -7,9 +7,8 @@
     using DataAccess.Readers.Core;
     using DataAccess.Readers.Interfaces;
 
-    using ICalcAvgCostByCodeByRegion = GP.Prescriptions.BusinessObjects.Queries.Interfaces.ICalcAvgCostByCodeByRegion;
-    using IPrescriptionsQueryFactory = GP.Prescriptions.BusinessObjects.Queries.Interfaces.IPrescriptionsQueryFactory;
-    using PrescriptionsQueryFactory = GP.Prescriptions.BusinessObjects.Queries.Core.PrescriptionsQueryFactory;
+    using BusinessObjects.Queries.Interfaces;
+    using BusinessObjects.Queries.Core;
 
     /// <summary>
     /// A business service obtaining data about prescriptions.
@@ -20,7 +19,7 @@
         #region Private Fields
 
         private readonly IPrescriptionsCsvReader prescriptionsReader;
-        private readonly IPrescriptionsQueryFactory QueryFactory;
+        private readonly IPrescriptionsQueryFactory queryFactory;
 
         private readonly Practices practices;
 
@@ -29,17 +28,18 @@
         #region Constructors
 
         /// <summary>
-        /// Initialises a new instance of the <see cref="PrescriptionsService"/> class.
+        /// Initialises a new instance of the <see cref="PrescriptionsService" /> class.
         /// </summary>
         /// <param name="practices">The practices.</param>
         /// <param name="prescriptionsReader">The prescriptions reader.</param>
+        /// <param name="queryFactory">The query factory.</param>
         public PrescriptionsService(Practices practices, IPrescriptionsCsvReader prescriptionsReader, 
-            IPrescriptionsQueryFactory QueryFactory)
+            IPrescriptionsQueryFactory queryFactory)
         {
             // Set objects
             this.practices = practices;
             this.prescriptionsReader = prescriptionsReader;
-            this.QueryFactory = QueryFactory;
+            this.queryFactory = queryFactory;
         }
 
         /// <summary>
@@ -67,7 +67,7 @@
         public decimal GetAverageActCost(string bnfCode)
         {
             // Create query
-            var query = QueryFactory.CalcAvgCostByCode(bnfCode);
+            var query = queryFactory.CalcAvgCostByCode(bnfCode);
 
             // Query csv reader
             prescriptionsReader.ExecuteQuery(query);
@@ -83,7 +83,7 @@
         public Dictionary<string, decimal> GetTotalSpendPerPostcode()
         {
             // Create query, passing the practices list
-            var query = QueryFactory.CalcTotalSpendPerPostcode(practices);
+            var query = queryFactory.CalcTotalSpendPerPostcode(practices);
 
             // Query with csv
             prescriptionsReader.ExecuteQuery(query);
@@ -104,7 +104,7 @@
 
             // Create query for each region
             Region.All.ForEach(r => queries.Add(
-                QueryFactory.CalcAvgCostByCodeByRegion(bnfCode, r, practices)));
+                queryFactory.CalcAvgCostByCodeByRegion(bnfCode, r, practices)));
 
             // Query csv file
             prescriptionsReader.ExecuteQuery(queries);

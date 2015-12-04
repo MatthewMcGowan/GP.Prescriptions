@@ -1,11 +1,7 @@
 ﻿namespace GP.Prescriptions.BusinessObjects.Queries.Core
 {
-    using GP.Prescriptions.BusinessObjects.Classes;
-    using GP.Prescriptions.BusinessObjects.Queries.Interfaces;
-
-    using ICalcAvgCostByCode = GP.Prescriptions.BusinessObjects.Queries.Interfaces.ICalcAvgCostByCode;
-    using ICalcAvgCostByCodeByRegion = GP.Prescriptions.BusinessObjects.Queries.Interfaces.ICalcAvgCostByCodeByRegion;
-    using ICalcTotalSpendPerPostcode = GP.Prescriptions.BusinessObjects.Queries.Interfaces.ICalcTotalSpendPerPostcode;
+    using Classes;
+    using Interfaces;
 
     public class PrescriptionsQueryFactory : IPrescriptionsQueryFactory
     {

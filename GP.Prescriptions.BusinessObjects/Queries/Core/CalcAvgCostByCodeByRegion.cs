@@ -1,9 +1,7 @@
 ﻿namespace GP.Prescriptions.BusinessObjects.Queries.Core
 {
-    using GP.Prescriptions.BusinessObjects.Classes;
-    using GP.Prescriptions.BusinessObjects.Structs;
-
-    using ICalcAvgCostByCodeByRegion = GP.Prescriptions.BusinessObjects.Queries.Interfaces.ICalcAvgCostByCodeByRegion;
+    using Classes;
+    using Structs;
 
     public class CalcAvgCostByCodeByRegion : BaseCalcAvgCostByCode, Interfaces.ICalcAvgCostByCodeByRegion
     {
@@ -37,10 +35,10 @@
             string rowRegion = practices.GetPracticeRegionByPracticeCode(row.PracticeCode);
 
             // If row matches search criteria, add it
-            if (row.BNFCode == bnfCode && rowRegion == Region.ToString())
+            if (row.BNFCode == BnfCode && rowRegion == Region.ToString())
             {
-                totalSold += row.Items;
-                totalCost += row.NIC;
+                TotalSold += row.Items;
+                TotalCost += row.ActualCost;
             }
         }
 

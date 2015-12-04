@@ -1,6 +1,6 @@
 ﻿namespace GP.Prescriptions.BusinessObjects.Queries.Interfaces
 {
-    using GP.Prescriptions.BusinessObjects.Structs;
+    using Structs;
 
     public interface IPrescriptionsQuery
     {

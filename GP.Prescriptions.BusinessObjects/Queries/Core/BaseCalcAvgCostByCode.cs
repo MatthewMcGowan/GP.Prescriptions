@@ -1,15 +1,15 @@
 ﻿namespace GP.Prescriptions.BusinessObjects.Queries.Core
 {
-    using GP.Prescriptions.BusinessObjects.Structs;
+    using Structs;
 
     public abstract class BaseCalcAvgCostByCode
     {
         #region Protected Fields
 
-        protected readonly string bnfCode;
+        protected readonly string BnfCode;
 
-        protected long totalSold;
-        protected decimal totalCost;
+        protected long TotalSold;
+        protected decimal TotalCost;
 
         #endregion
 
@@ -17,10 +17,10 @@
 
         protected BaseCalcAvgCostByCode(string bnfCode)
         {
-            this.bnfCode = bnfCode;
+            this.BnfCode = bnfCode;
 
-            totalSold = 0L;
-            totalCost = 0M;
+            TotalSold = 0L;
+            TotalCost = 0M;
         }
 
         #endregion
@@ -31,7 +31,7 @@
         {
             get
             {
-                return totalSold > 0 ? totalCost / totalSold : 0M;
+                return TotalSold > 0 ? TotalCost / TotalSold : 0M;
             }
         }
 
@@ -41,10 +41,10 @@
 
         public virtual void ProcessRow(PrescriptionData row)
         {
-            if (row.BNFCode == bnfCode)
+            if (row.BNFCode == BnfCode)
             {
-                totalSold += row.Items;
-                totalCost += row.ActualCost;
+                TotalSold += row.Items;
+                TotalCost += row.ActualCost;
             }
         }
 

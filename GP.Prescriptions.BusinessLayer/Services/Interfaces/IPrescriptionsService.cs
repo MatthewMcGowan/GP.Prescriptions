@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    using GP.Prescriptions.BusinessObjects.Classes;
+    using BusinessObjects.Classes;
 
     public interface IPrescriptionsService
     {

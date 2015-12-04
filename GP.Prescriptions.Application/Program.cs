@@ -20,19 +20,19 @@ namespace GP.Prescriptions.Application
             var prescriptionService = new PrescriptionsService(practicesService.Practices);
             Console.WriteLine("Startup completed.");
 
-            if(askBooleanQuestion("Process all at once?"))
+            if(AskBooleanQuestion("Process all at once?"))
             {
-                processOnce(practicesService, prescriptionService);
+                ProcessOnce(practicesService, prescriptionService);
             }
             else
             {
-                process(practicesService, prescriptionService);
+                Process(practicesService, prescriptionService);
             }
 
             Console.ReadLine();
         }
 
-        private static bool askBooleanQuestion(string question)
+        private static bool AskBooleanQuestion(string question)
         {
             // Ask user the question
             Console.WriteLine(question + " [y/n]");
@@ -45,7 +45,7 @@ namespace GP.Prescriptions.Application
             if (response != 'y' && response != 'n')
             {
                 Console.WriteLine("Incorrect input");
-                askBooleanQuestion(question);
+                AskBooleanQuestion(question);
             }
 
             // Return true/false based on user input
@@ -57,7 +57,7 @@ namespace GP.Prescriptions.Application
             return false;
         }
 
-        private static void process(PracticesService practicesService, PrescriptionsService prescriptionService)
+        private static void Process(PracticesService practicesService, PrescriptionsService prescriptionService)
         {
             // Find out how many practices there are in London
             Console.WriteLine("How many practices are in London?");
@@ -67,7 +67,7 @@ namespace GP.Prescriptions.Application
             // Find out the average national cost of a peppermint oil prescription
             Console.WriteLine("What was the average actual cost of all peppermint oil prescriptions?");
             decimal averagePepermintOilCost = prescriptionService.GetAverageActCost("0102000T0");
-            Console.WriteLine("£" + averagePepermintOilCost.ToString("#.##"));
+            Console.WriteLine(averagePepermintOilCost.ToString("£0.00"));
 
             // Find the 5 highest spending postcodes
             Console.WriteLine("Which 5 post codes have the highest actual spend, and how much did each spend in total?");
@@ -76,7 +76,7 @@ namespace GP.Prescriptions.Application
             // Get top 5
             var topFive = totalPostcodeSpends.OrderByDescending(p => p.Value).Take(5).ToList();
             // Write to console
-            topFive.ForEach(p => Console.WriteLine(p.Key + ": £" + p.Value));
+            topFive.ForEach(p => Console.WriteLine(p.Key + " " + p.Value.ToString("£0.00")));
 
             // Find average price of Flucloxacillin
             Console.WriteLine("For each region, what was the average price per prescription of Flucloxacillin,"
@@ -85,18 +85,18 @@ namespace GP.Prescriptions.Application
             var averageFlucloxacillinRegions = prescriptionService.GetAverageActCostPerRegion("0501012G0");
             // Get average cost for country
             decimal averageFlucloxacillinNational = prescriptionService.GetAverageActCost("0501012G0");
-            Console.WriteLine("National: £" + averageFlucloxacillinNational.ToString("#.##"));
+            Console.WriteLine("National: " + averageFlucloxacillinNational.ToString("£0.00"));
             foreach(var r in averageFlucloxacillinRegions)
             {
-                Console.WriteLine(r.Key + ": £" + r.Value.ToString("#.##") + "; " 
-                    + (r.Value - averageFlucloxacillinNational).ToString("#.##"));
+                Console.WriteLine(r.Key + " " + r.Value.ToString("£0.00") + "; " 
+                    + (r.Value - averageFlucloxacillinNational).ToString("£0.00"));
             }
 
 
             Console.ReadLine();
         }
 
-        private static void processOnce(PracticesService practicesService, PrescriptionsService prescriptionService)
+        private static void ProcessOnce(PracticesService practicesService, PrescriptionsService prescriptionService)
         {
 
         }

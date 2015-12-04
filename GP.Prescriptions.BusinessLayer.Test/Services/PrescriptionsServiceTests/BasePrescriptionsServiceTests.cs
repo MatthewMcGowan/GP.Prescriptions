@@ -2,12 +2,12 @@
 {
     using System.Collections.Concurrent;
 
-    using GP.Prescriptions.BusinessLayer.Services.Core;
-    using GP.Prescriptions.BusinessObjects.Classes;
-    using GP.Prescriptions.BusinessObjects.Queries.Interfaces;
-    using GP.Prescriptions.BusinessObjects.Structs;
-    using GP.Prescriptions.DataAccess.Readers.Interfaces;
-    using GP.Prescriptions.Test.Data;
+    using BusinessLayer.Services.Core;
+    using BusinessObjects.Classes;
+    using BusinessObjects.Queries.Interfaces;
+    using BusinessObjects.Structs;
+    using DataAccess.Readers.Interfaces;
+    using Prescriptions.Test.Data;
 
     using Moq;
 
@@ -41,13 +41,13 @@
             var postcodeRegion1 = new PostcodeRegion
             {
                 Postcode = Data.Postcode1,
-                Region = Data.Region1
+                Region = Data.RegionLondon
             };
 
             var postcodeRegion2 = new PostcodeRegion
             {
                 Postcode = Data.Postcode2,
-                Region = Data.Region2
+                Region = Data.RegionNe
             };
 
             // Create dictionary, add the values

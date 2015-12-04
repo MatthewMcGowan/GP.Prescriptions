@@ -3,10 +3,10 @@
     using System.Collections.Concurrent;
     using System.Collections.Generic;
 
-    using GP.Prescriptions.BusinessLayer.Services.Core;
-    using GP.Prescriptions.BusinessObjects.Structs;
-    using GP.Prescriptions.DataAccess.Readers.Interfaces;
-    using GP.Prescriptions.Test.Data;
+    using BusinessLayer.Services.Core;
+    using BusinessObjects.Structs;
+    using DataAccess.Readers.Interfaces;
+    using Prescriptions.Test.Data;
 
     using Moq;
 
@@ -14,19 +14,19 @@
     {
         #region Protected Fields
 
-        protected readonly Mock<IPracticesCsvReader> practicesReader;
-        protected readonly Mock<IPostcodesCsvReader> postcodesReader;
+        protected readonly Mock<IPracticesCsvReader> PracticesReader;
+        protected readonly Mock<IPostcodesCsvReader> PostcodesReader;
 
-        protected PracticesService practicesService;
+        protected PracticesService PracticesService;
 
         #endregion
 
         #region Constructors
 
-        public BasePracticesServiceTests()
+        protected BasePracticesServiceTests()
         {
-            practicesReader = new Mock<IPracticesCsvReader>();
-            postcodesReader = new Mock<IPostcodesCsvReader>();
+            PracticesReader = new Mock<IPracticesCsvReader>();
+            PostcodesReader = new Mock<IPostcodesCsvReader>();
         }
 
         #endregion
@@ -35,8 +35,8 @@
 
         protected void MockDependencies()
         {
-            practicesReader.Setup(r => r.GetPracticeData()).Returns(GetPracticeList());
-            postcodesReader.Setup(r => r.GetPracticeDictionary(It.IsAny<List<PracticeData>>())).Returns(GetPractceDictionary());
+            PracticesReader.Setup(r => r.GetPracticeData()).Returns(GetPracticeList());
+            PostcodesReader.Setup(r => r.GetPracticeDictionary(It.IsAny<List<PracticeData>>())).Returns(GetPractceDictionary());
         }
 
         protected List<PracticeData> GetPracticeList()
@@ -62,13 +62,13 @@
             var postcodeRegion1 = new PostcodeRegion
             {
                 Postcode = Data.Postcode1,
-                Region = Data.Region1
+                Region = Data.RegionLondon
             };
 
             var postcodeRegion2 = new PostcodeRegion
             {
                 Postcode = Data.Postcode2,
-                Region = Data.Region2
+                Region = Data.RegionNe
             };
 
             // Create dictionary to return, add the values

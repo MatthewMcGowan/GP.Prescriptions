@@ -1,6 +1,6 @@
 ﻿namespace GP.Prescriptions.BusinessLayer.Services.Interfaces
 {
-    using GP.Prescriptions.BusinessObjects.Classes;
+    using BusinessObjects.Classes;
 
     public interface IPracticesService
     {

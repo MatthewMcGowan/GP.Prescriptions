@@ -1,27 +1,62 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GP.Prescriptions.BusinessObjects.Test.Queries
+﻿namespace GP.Prescriptions.BusinessObjects.Test.Queries
 {
     using NUnit.Framework;
-    using Moq;
+
     using BusinessObjects.Queries.Core;
+    using Prescriptions.Test.Data;
 
     [TestFixture]
-    public class CalcTotalSpendPerPostcodeTests
+    public class CalcTotalSpendPerPostcodeTests :BaseQueriesTests
     {
         private CalcTotalSpendPerPostcode query;
 
         [SetUp]
         public void Setup()
         {
-            //query = new CalcTotalSpendPerPostcode()
+            query = new CalcTotalSpendPerPostcode(Practices);
         }
 
-        //[Test]
-        //public void ProcessRow_
+        [Test]
+        public void CalcTotalSpendPerPostcode__TwoRowsWithSamePostcode_CorrectValueCalculated()
+        {
+            // Process two rows with same postcode
+            query.ProcessRow(ValidRow);
+            query.ProcessRow(ValidRowDifferentCosts);
+
+            // Get result
+            var result = query.Result;
+
+            // Check correct value calculated
+            decimal expected = Data.Cost2 + Data.Cost3;
+            Assert.AreEqual(expected, result[Data.Postcode1]);
+        }
+
+        [Test]
+        public void CalcTotalSpendPerPostcode_RowWithOtherPostcodeGiven_OtherPostcodeRowIgnored()
+        {
+            // Process two rows with different postcodes
+            query.ProcessRow(ValidRow);
+            query.ProcessRow(ValidRowPractice2);
+
+            // Get result
+            var result = query.Result;
+
+            // Check postcodes are independent
+            Assert.AreEqual(Data.Cost2, result[Data.Postcode1]);
+            Assert.AreEqual(Data.Cost2, result[Data.Postcode2]);
+        }
+
+        [Test]
+        public void CalcTotalSpendPerPostcode_ZeroValuedRowGiven_ZeroValueReturned()
+        {
+            // Process zero valued row
+            query.ProcessRow(ZeroRow);
+
+            // Get result
+            var result = query.Result;
+
+            // Check zero result returned
+            Assert.AreEqual(Data.CostZero, result[Data.Postcode1]);
+        }
     }
 }

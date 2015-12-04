@@ -1,8 +1,8 @@
 ﻿namespace GP.Prescriptions.BusinessLayer.Test.Services.PrescriptionsServiceTests
 {
-    using GP.Prescriptions.BusinessLayer.Services.Core;
-    using GP.Prescriptions.BusinessObjects.Queries.Interfaces;
-    using GP.Prescriptions.Test.Data;
+    using BusinessLayer.Services.Core;
+    using BusinessObjects.Queries.Interfaces;
+    using Prescriptions.Test.Data;
 
     using Moq;
 

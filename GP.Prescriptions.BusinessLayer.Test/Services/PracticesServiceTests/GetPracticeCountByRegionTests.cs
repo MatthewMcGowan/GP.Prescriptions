@@ -18,9 +18,9 @@
         [Test]
         public void GetPracticeCountByRegion_ValidRegionGiven_CorrectCountReturned()
         {
-            practicesService = new PracticesService(practicesReader.Object, postcodesReader.Object);
+            PracticesService = new PracticesService(PracticesReader.Object, PostcodesReader.Object);
 
-            int result = practicesService.GetPracticeCountByRegion(Region.London);
+            int result = PracticesService.GetPracticeCountByRegion(Region.London);
 
             Assert.AreEqual(result, 1);
         }
@@ -28,9 +28,9 @@
         [Test]
         public void GetPracticeCountByRegion_RegionHasNoPractices_ZeroReturned()
         {
-            practicesService = new PracticesService(practicesReader.Object, postcodesReader.Object);
+            PracticesService = new PracticesService(PracticesReader.Object, PostcodesReader.Object);
 
-            int result = practicesService.GetPracticeCountByRegion(Region.SouthEast);
+            int result = PracticesService.GetPracticeCountByRegion(Region.SouthEast);
 
             Assert.AreEqual(result, 0);
         }

@@ -2,10 +2,8 @@
 {
     using System.Collections.Generic;
 
-    using GP.Prescriptions.BusinessObjects.Classes;
-    using GP.Prescriptions.BusinessObjects.Structs;
-
-    using ICalcTotalSpendPerPostcode = GP.Prescriptions.BusinessObjects.Queries.Interfaces.ICalcTotalSpendPerPostcode;
+    using Classes;
+    using Structs;
 
     public class CalcTotalSpendPerPostcode : Interfaces.ICalcTotalSpendPerPostcode
     {
@@ -13,7 +11,7 @@
 
         private readonly Practices practices;
 
-        private Dictionary<string, decimal> postcodeSpends;
+        private readonly Dictionary<string, decimal> postcodeSpends;
 
         #endregion
 
