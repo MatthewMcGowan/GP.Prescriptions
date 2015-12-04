@@ -7,6 +7,9 @@
     using BusinessObjects.Queries.Interfaces;
     using BusinessObjects.Structs;
     using DataAccess.Readers.Interfaces;
+
+    using GP.Prescriptions.BusinessObjects.Objects;
+
     using Prescriptions.Test.Data;
 
     using Moq;

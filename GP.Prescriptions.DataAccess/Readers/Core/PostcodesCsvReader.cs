@@ -12,17 +12,33 @@
     using LumenWorks.Framework.IO.Csv;
     using BusinessObjects.Extensions;
 
+    /// <summary>
+    /// Reads the postcodes CSV.
+    /// </summary>
+    /// <seealso cref="GP.Prescriptions.DataAccess.Readers.Interfaces.IPostcodesCsvReader" />
     public class PostcodesCsvReader : IPostcodesCsvReader
     {
         #region Private Fields
 
+        /// <summary>
+        /// The postcodes CSV file.
+        /// </summary>
         private readonly string postcodesCsvFile = ConfigurationManager.AppSettings.Get("PostcodesCsv");
+        
+        /// <summary>
+        /// Whether the file has headers.
+        /// </summary>
         private readonly bool fileHasHeaders = Convert.ToBoolean(ConfigurationManager.AppSettings.Get("PostcodesCsvHasHeaders"));
 
         #endregion
 
         #region Public Methods
 
+        /// <summary>
+        /// Gets the practices dictionary.
+        /// </summary>
+        /// <param name="practicesData">The practices data.</param>
+        /// <returns></returns>
         public ConcurrentDictionary<string, PostcodeRegion> GetPracticeDictionary(List<PracticeData> practicesData)
         {            
             // Sort list by post code

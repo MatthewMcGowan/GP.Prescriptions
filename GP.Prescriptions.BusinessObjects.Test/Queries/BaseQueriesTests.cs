@@ -3,6 +3,9 @@
     using System.Collections.Concurrent;
 
     using Classes;
+
+    using GP.Prescriptions.BusinessObjects.Objects;
+
     using Structs;
     using Prescriptions.Test.Data;
 

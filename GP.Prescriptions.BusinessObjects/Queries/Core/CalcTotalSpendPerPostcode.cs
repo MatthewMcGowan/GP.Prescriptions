@@ -2,21 +2,36 @@
 {
     using System.Collections.Generic;
 
-    using Classes;
+    using Objects;
     using Structs;
+    using Interfaces;
 
-    public class CalcTotalSpendPerPostcode : Interfaces.ICalcTotalSpendPerPostcode
+    /// <summary>
+    /// Query calculating the total spend for all postcodes.
+    /// </summary>
+    /// <seealso cref="GP.Prescriptions.BusinessObjects.Queries.Interfaces.ICalcTotalSpendPerPostcode" />
+    public class CalcTotalSpendPerPostcode : ICalcTotalSpendPerPostcode
     {
         #region Private Fields
 
+        /// <summary>
+        /// The practices.
+        /// </summary>
         private readonly Practices practices;
 
+        /// <summary>
+        /// The postcode spends.
+        /// </summary>
         private readonly Dictionary<string, decimal> postcodeSpends;
 
         #endregion
 
         #region Constructors
 
+        /// <summary>
+        /// Initialises a new instance of the <see cref="CalcTotalSpendPerPostcode"/> class.
+        /// </summary>
+        /// <param name="practices">The practices.</param>
         public CalcTotalSpendPerPostcode(Practices practices)
         {
             // Set the practices
@@ -29,7 +44,13 @@
         #endregion
 
         #region Public Properties
-        
+
+        /// <summary>
+        /// Gets the result.
+        /// </summary>
+        /// <value>
+        /// The result.
+        /// </value>
         public Dictionary<string, decimal> Result
         {
             get
@@ -42,6 +63,10 @@
 
         #region Public Methods
 
+        /// <summary>
+        /// Processes the row.
+        /// </summary>
+        /// <param name="row">The row.</param>
         public void ProcessRow(PrescriptionData row)
         {
             string postcode = practices.GetPracticePostcodeByPracticeCode(row.PracticeCode);

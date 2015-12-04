@@ -48,6 +48,7 @@
     <Compile Include="Queries\Core\BaseCalcAvgCostByCode.cs" />
     <Compile Include="Queries\Core\CalcAvgCostByCode.cs" />
     <Compile Include="Queries\Core\CalcAvgCostByCodeByRegion.cs" />
+    <Compile Include="Queries\Core\CalcAvgNicByCodeByRegion.cs" />
     <Compile Include="Queries\Core\CalcTotalSpendPerPostcode.cs" />
     <Compile Include="Queries\Core\PrescriptionsQueryFactory.cs" />
     <Compile Include="Queries\Interfaces\ICalcAvgCostByCode.cs" />

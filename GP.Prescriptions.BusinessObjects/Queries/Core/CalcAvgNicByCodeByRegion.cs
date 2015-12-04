@@ -1,16 +1,19 @@
 ﻿namespace GP.Prescriptions.BusinessObjects.Queries.Core
 {
     using Classes;
-    using Objects;
-    using Structs;
-    using Interfaces;
 
+    using GP.Prescriptions.BusinessObjects.Objects;
+
+    using Interfaces;
+    using Structs;
+
+    
     /// <summary>
-    /// Query for calculating average cost by region for a particular prescription.
+    /// Queries the average NIC for a region.
     /// </summary>
     /// <seealso cref="GP.Prescriptions.BusinessObjects.Queries.Core.BaseCalcAvgCostByCode" />
     /// <seealso cref="GP.Prescriptions.BusinessObjects.Queries.Interfaces.ICalcAvgCostByCodeByRegion" />
-    public class CalcAvgCostByCodeByRegion : BaseCalcAvgCostByCode, ICalcAvgCostByCodeByRegion
+    public class CalcAvgNicByCodeByRegion : BaseCalcAvgCostByCode, ICalcAvgCostByCodeByRegion
     {
         #region Private Fields
 
@@ -24,12 +27,13 @@
         #region Constructors
 
         /// <summary>
-        /// Initialises a new instance of the <see cref="CalcAvgCostByCodeByRegion"/> class.
+        /// Initialises a new instance of the <see cref="CalcAvgNicByCodeByRegion"/> class.
         /// </summary>
         /// <param name="bnfCode">The BNF code.</param>
         /// <param name="region">The region.</param>
         /// <param name="practices">The practices.</param>
-        public CalcAvgCostByCodeByRegion(string bnfCode, Region region, Practices practices) : base(bnfCode)
+        public CalcAvgNicByCodeByRegion(string bnfCode, Region region, Practices practices)
+            : base(bnfCode)
         {
             Region = region;
             this.practices = practices;
@@ -40,12 +44,12 @@
         #region Public Properties
 
         /// <summary>
-        /// Gets the region.
+        /// Gets or sets the region.
         /// </summary>
         /// <value>
         /// The region.
         /// </value>
-        public Region Region { get; private set; }
+        public Region Region { get; set; }
 
         #endregion
 
@@ -64,7 +68,7 @@
             if (row.BNFCode == BnfCode && rowRegion == Region.ToString())
             {
                 TotalSold += row.Items;
-                TotalCost += row.ActualCost;
+                TotalCost += row.NIC;
             }
         }
 

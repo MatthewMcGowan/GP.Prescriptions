@@ -1,19 +1,47 @@
 ﻿namespace GP.Prescriptions.BusinessObjects.Structs
 {
+    /// <summary>
+    /// Data for a prescription.
+    /// </summary>
     public struct PrescriptionData
     {
-        // Strategic Healthy Authority
+        /// <summary>
+        /// Strategic Healthy Authority.
+        /// </summary>
         public string SHA;
-        // Primary Care Trust
+
+        /// <summary>
+        /// The Primary Care Trust.
+        /// </summary>
         public string PCT;
+
+        /// <summary>
+        /// The practice code.
+        /// </summary>
         public string PracticeCode;
-        // British National Formulary
+
+        /// <summary>
+        /// The British National Formulary code.
+        /// </summary>
         public string BNFCode;
+
+        /// <summary>
+        /// The BNF name.
+        /// </summary>
         public string BNFName;
+
         public int Items;
-        // Net Ingredient Cost
+        // Net Ingredient Cost.
         public decimal NIC;
+
+        /// <summary>
+        /// The actual cost.
+        /// </summary>
         public decimal ActualCost;
+
+        /// <summary>
+        /// The period.
+        /// </summary>
         public string Period;
     }
 }

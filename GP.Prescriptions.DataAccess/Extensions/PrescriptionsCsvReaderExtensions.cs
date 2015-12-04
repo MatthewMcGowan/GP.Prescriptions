@@ -3,8 +3,16 @@
     using BusinessObjects.Structs;
     using LumenWorks.Framework.IO.Csv;
 
+    /// <summary>
+    /// Extensions for PrescriptionsCsvReader.
+    /// </summary>
     public static class PrescriptionsCsvReaderExtensions
     {
+        /// <summary>
+        /// Turns a row from prescriptions CSV into a PrescriptionData struct.
+        /// </summary>
+        /// <param name="row">The row.</param>
+        /// <returns>PrescriptionData struct.</returns>
         public static PrescriptionData PrescriptionCsvRowToStruct(this CsvReader row)
         {
             return new PrescriptionData

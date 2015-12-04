@@ -12,17 +12,32 @@
 
     using BusinessObjects.Queries.Interfaces;
 
+    /// <summary>
+    /// Reads the prescriptions CSV, performing a given query.
+    /// </summary>
+    /// <seealso cref="GP.Prescriptions.DataAccess.Readers.Interfaces.IPrescriptionsCsvReader" />
     public class PrescriptionsCsvReader : IPrescriptionsCsvReader
     {
         #region Private Fields
 
+        /// <summary>
+        /// The prescriptions CSV file.
+        /// </summary>
         private readonly string prescriptionsCsvFile = ConfigurationManager.AppSettings.Get("PrescriptionsCsv");
+
+        /// <summary>
+        /// Whether the file has headers.
+        /// </summary>
         private readonly bool fileHasHeaders = Convert.ToBoolean(ConfigurationManager.AppSettings.Get("PrescriptionsCsvHasHeaders"));
 
         #endregion
 
         #region Public Methods
 
+        /// <summary>
+        /// Executes the query.
+        /// </summary>
+        /// <param name="query">The query.</param>
         public void ExecuteQuery(IPrescriptionsQuery query)
         {
             using (var csv = new CsvReader(new StreamReader(prescriptionsCsvFile), fileHasHeaders))
@@ -39,6 +54,10 @@
             }
         }
 
+        /// <summary>
+        /// Executes the query.
+        /// </summary>
+        /// <param name="queries">The queries.</param>
         public void ExecuteQuery(IEnumerable<IPrescriptionsQuery> queries)
         {
             using (var csv = new CsvReader(new StreamReader(prescriptionsCsvFile), fileHasHeaders))

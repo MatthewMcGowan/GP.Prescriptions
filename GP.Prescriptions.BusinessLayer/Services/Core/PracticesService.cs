@@ -7,11 +7,24 @@
     using DataAccess.Readers.Core;
     using DataAccess.Readers.Interfaces;
 
+    using GP.Prescriptions.BusinessObjects.Objects;
+
+    /// <summary>
+    /// Business service for practice data.
+    /// </summary>
+    /// <seealso cref="GP.Prescriptions.BusinessLayer.Services.Interfaces.IPracticesService" />
     public class PracticesService : IPracticesService
     {
         #region Private Fields
 
+        /// <summary>
+        /// The practices reader
+        /// </summary>
         private readonly IPracticesCsvReader practicesReader;
+        
+        /// <summary>
+        /// The postcodes reader
+        /// </summary>
         private readonly IPostcodesCsvReader postcodesReader;
 
         #endregion
@@ -31,6 +44,9 @@
             InitialisePractices();
         }
 
+        /// <summary>
+        /// Initialises a new instance of the <see cref="PracticesService"/> class.
+        /// </summary>
         public PracticesService()
             : this(new PracticesCsvReader(), new PostcodesCsvReader())
         {
@@ -40,6 +56,12 @@
 
         #region Public Properties
 
+        /// <summary>
+        /// Gets the practices.
+        /// </summary>
+        /// <value>
+        /// The practices.
+        /// </value>
         public Practices Practices { get; private set; }
 
         #endregion
