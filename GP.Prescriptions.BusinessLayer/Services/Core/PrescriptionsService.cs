@@ -136,10 +136,12 @@
             var queryBatch = new PrescriptionsQueryBatch();
 
             // Query the average Actual Cost for each region
-            Region.All.ForEach(r => queryBatch.TryAdd(new CalcTotalActCostByCodeByRegion(bnfCode, r, practices)));
+            Region.All.ForEach(r => queryBatch.TryAdd(
+                queryFactory.CalcTotalActCostByCodeByRegion(bnfCode, r, practices)));
             
             // Query the average NIC for each region
-            Region.All.ForEach(r => queryBatch.TryAdd(new CalcTotalNicByCodeByRegion(bnfCode, r, practices)));
+            Region.All.ForEach(r => queryBatch.TryAdd(
+                queryFactory.CalcTotalNicByCodeByRegion(bnfCode, r, practices)));
 
             // Execute the queries using the reader
             prescriptionsReader.ExecuteQuery(queryBatch);

@@ -50,14 +50,12 @@
     <Compile Include="Queries\Core\BaseCalcTotalByCodeByRegion.cs" />
     <Compile Include="Queries\Core\CalcAvgActCostByCode.cs" />
     <Compile Include="Queries\Core\CalcAvgActCostByCodeByRegion.cs" />
-    <Compile Include="Queries\Core\CalcAvgNicByCodeByRegion.cs" />
     <Compile Include="Queries\Core\CalcTotalActCostByCodeByRegion.cs" />
     <Compile Include="Queries\Core\CalcTotalActCostPerPostcode.cs" />
     <Compile Include="Factories\Core\PrescriptionsQueryFactory.cs" />
     <Compile Include="Queries\Core\CalcTotalNicByCodeByRegion.cs" />
     <Compile Include="Queries\Interfaces\ICalcAvgCostByCode.cs" />
     <Compile Include="Queries\Interfaces\ICalcAvgCostByCodeByRegion.cs" />
-    <Compile Include="Queries\Interfaces\ICalcAvgNicByCodeByRegion.cs" />
     <Compile Include="Queries\Interfaces\ICalcTotalActCostByCodeByRegion.cs" />
     <Compile Include="Queries\Interfaces\ICalcTotalNicByCodeByRegion.cs" />
     <Compile Include="Queries\Interfaces\ICalcTotalActCostPerPostcode.cs" />

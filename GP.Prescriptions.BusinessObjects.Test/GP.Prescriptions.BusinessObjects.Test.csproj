@@ -62,6 +62,8 @@
     <Compile Include="Queries\BaseQueriesTests.cs" />
     <Compile Include="Queries\CalcAvgCostByCodeByRegionTests.cs" />
     <Compile Include="Queries\CalcAvgCostByCodeTests.cs" />
+    <Compile Include="Queries\CalcTotalActCostByCodeByRegionTests.cs" />
+    <Compile Include="Queries\CalcTotalNicByCodeByRegionTests.cs" />
     <Compile Include="Queries\CalcTotalSpendPerPostcodeTests.cs" />
   </ItemGroup>
   <ItemGroup>
