@@ -1,7 +1,6 @@
 ﻿namespace GP.Prescriptions.BusinessObjects.Queries.Core
 {
     using Classes;
-    using Objects;
     using Structs;
     using Interfaces;
 
@@ -10,7 +9,7 @@
     /// </summary>
     /// <seealso cref="GP.Prescriptions.BusinessObjects.Queries.Core.BaseCalcAvgCostByCode" />
     /// <seealso cref="GP.Prescriptions.BusinessObjects.Queries.Interfaces.ICalcAvgCostByCodeByRegion" />
-    public class CalcAvgCostByCodeByRegion : BaseCalcAvgCostByCode, ICalcAvgCostByCodeByRegion
+    public class CalcAvgActCostByCodeByRegion : BaseCalcAvgCostByCode, ICalcAvgCostByCodeByRegion
     {
         #region Private Fields
 
@@ -24,12 +23,12 @@
         #region Constructors
 
         /// <summary>
-        /// Initialises a new instance of the <see cref="CalcAvgCostByCodeByRegion"/> class.
+        /// Initialises a new instance of the <see cref="CalcAvgActCostByCodeByRegion"/> class.
         /// </summary>
         /// <param name="bnfCode">The BNF code.</param>
         /// <param name="region">The region.</param>
         /// <param name="practices">The practices.</param>
-        public CalcAvgCostByCodeByRegion(string bnfCode, Region region, Practices practices) : base(bnfCode)
+        public CalcAvgActCostByCodeByRegion(string bnfCode, Region region, Practices practices) : base(bnfCode)
         {
             Region = region;
             this.practices = practices;

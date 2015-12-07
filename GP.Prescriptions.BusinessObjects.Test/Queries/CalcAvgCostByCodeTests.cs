@@ -8,12 +8,12 @@
     [TestFixture]
     public class CalcAvgCostByCodeTests : BaseQueriesTests
     {
-        private CalcAvgCostByCode query;
+        private CalcAvgActCostByCode query;
 
         [SetUp]
         public void Setup()
         {
-            query = new CalcAvgCostByCode(Data.BnfCode1);
+            query = new CalcAvgActCostByCode(Data.BnfCode1);
         }
 
         [Test]

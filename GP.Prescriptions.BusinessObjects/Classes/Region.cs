@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace GP.Prescriptions.BusinessObjects.Classes
+﻿namespace GP.Prescriptions.BusinessObjects.Classes
 {
+    using System.Collections.Generic;
+
     public sealed class Region
     {
         // Type-Safe-Enum pattern

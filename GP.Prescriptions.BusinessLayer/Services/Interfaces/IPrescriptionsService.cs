@@ -13,27 +13,27 @@
         /// Gets the average act cost.
         /// </summary>
         /// <param name="bnfCode">The BNF code.</param>
-        /// <returns></returns>
+        /// <returns>THe average actual cost.</returns>
         decimal GetAverageActCost(string bnfCode);
 
         /// <summary>
         /// Gets the total spend per postcode.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The total spend for each postcode.</returns>
         Dictionary<string, decimal> GetTotalSpendPerPostcode();
 
         /// <summary>
         /// Gets the average act cost per region.
         /// </summary>
         /// <param name="bnfCode">The BNF code.</param>
-        /// <returns></returns>
+        /// <returns>The average actual cost per region.</returns>
         Dictionary<Region, decimal> GetAverageActCostPerRegion(string bnfCode);
 
         /// <summary>
-        /// Gets the average margin by region.
+        /// Gets the average Actual Cost as a fraction of the average NIC by region.
         /// </summary>
         /// <param name="bnfCode">The BNF code.</param>
-        /// <returns></returns>
-        Dictionary<Region, decimal> GetAverageMarginByRegion(string bnfCode);
+        /// <returns>The decimal fraction of average Actual Cost to NIC.</returns>
+        Dictionary<Region, decimal> GetFractionActCostOfNicByRegion(string bnfCode);
     }
 }

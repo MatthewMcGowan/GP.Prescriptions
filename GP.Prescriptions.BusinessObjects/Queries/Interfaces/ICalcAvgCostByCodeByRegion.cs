@@ -23,5 +23,14 @@
         /// The region.
         /// </value>
         Region Region { get; }
+
+
+        /// <summary>
+        /// Gets the BNF code.
+        /// </summary>
+        /// <value>
+        /// The BNF code.
+        /// </value>
+        string BnfCode { get; }
     }
 }

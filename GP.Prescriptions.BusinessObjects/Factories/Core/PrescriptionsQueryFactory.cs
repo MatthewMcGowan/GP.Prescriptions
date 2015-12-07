@@ -1,8 +1,9 @@
-﻿namespace GP.Prescriptions.BusinessObjects.Queries.Core
+﻿namespace GP.Prescriptions.BusinessObjects.Factories.Core
 {
     using Classes;
-    using Objects;
     using Interfaces;
+    using Queries.Interfaces;
+    using Queries.Core;
 
     /// <summary>
     /// Factory to return a query object.
@@ -17,7 +18,7 @@
         /// <returns></returns>
         public ICalcAvgCostByCode CalcAvgCostByCode(string bnfCode)
         {
-            return new CalcAvgCostByCode(bnfCode);
+            return new CalcAvgActCostByCode(bnfCode);
         }
 
         /// <summary>
@@ -29,7 +30,7 @@
         /// <returns></returns>
         public ICalcAvgCostByCodeByRegion CalcAvgCostByCodeByRegion(string bnfCode, Region region, Practices practices)
         {
-            return new CalcAvgCostByCodeByRegion(bnfCode, region, practices);
+            return new CalcAvgActCostByCodeByRegion(bnfCode, region, practices);
         }
 
         /// <summary>
@@ -39,7 +40,7 @@
         /// <param name="region">The region.</param>
         /// <param name="practices">The practices.</param>
         /// <returns></returns>
-        public ICalcAvgCostByCodeByRegion CalcAvgNicByCodeByRegion(string bnfCode, Region region, Practices practices)
+        public ICalcAvgNicByCodeByRegion CalcAvgNicByCodeByRegion(string bnfCode, Region region, Practices practices)
         {
             return new CalcAvgNicByCodeByRegion(bnfCode, region, practices);
         }
@@ -49,9 +50,9 @@
         /// </summary>
         /// <param name="practices">The practices.</param>
         /// <returns></returns>
-        public ICalcTotalSpendPerPostcode CalcTotalSpendPerPostcode(Practices practices)
+        public ICalcTotalActCostPerPostcode CalcTotalSpendPerPostcode(Practices practices)
         {
-            return new CalcTotalSpendPerPostcode(practices);
+            return new CalcTotalActCostPerPostcode(practices);
         }
     }
 }

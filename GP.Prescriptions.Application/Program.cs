@@ -53,8 +53,9 @@ namespace GP.Prescriptions.Application
                     + (r.Value - averageFlucloxacillinNational).ToString("£0.00")));
 
             // Find by region the percentage difference between the NIC and Act Cost for
-            Console.WriteLine("For each region, what percentage is the Actual Cost of the Net Ingredient Cost for ");
-            var actPercentageOfNic = prescriptionService.GetAverageMarginByRegion("");
+            Console.WriteLine("For each region for Simeticone, what was the average Actual Cost "
+                + "as a percentage of the average Net Ingredient Cost?");
+            var actPercentageOfNic = prescriptionService.GetFractionActCostOfNicByRegion("0103050E0");
             actPercentageOfNic.ForEach(r => Console.WriteLine(r.Key + " " + r.Value.ToString("0.00%")));
 
             Console.ReadLine();

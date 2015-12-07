@@ -9,8 +9,8 @@
     using System.IO;
     using Extensions;
     using BusinessObjects.Extensions;
-
     using BusinessObjects.Queries.Interfaces;
+    using BusinessObjects.Classes;
 
     /// <summary>
     /// Reads the prescriptions CSV, performing a given query.
@@ -55,7 +55,7 @@
         }
 
         /// <summary>
-        /// Executes the query.
+        /// Executes the queries.
         /// </summary>
         /// <param name="queries">The queries.</param>
         public void ExecuteQuery(IEnumerable<IPrescriptionsQuery> queries)
@@ -72,6 +72,15 @@
                     queries.ForEach(q => q.ProcessRow(row));
                 }
             }  
+        }
+
+        /// <summary>
+        /// Executes the queries.
+        /// </summary>
+        /// <param name="batch">The batch.</param>
+        public void ExecuteQuery(PrescriptionsQueryBatch batch)
+        {
+            ExecuteQuery(batch.Queries);
         }
 
         #endregion

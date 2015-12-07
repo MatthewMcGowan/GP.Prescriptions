@@ -1,4 +1,4 @@
-﻿namespace GP.Prescriptions.BusinessObjects.Objects
+﻿namespace GP.Prescriptions.BusinessObjects.Classes
 {
     using System.Collections.Concurrent;
 

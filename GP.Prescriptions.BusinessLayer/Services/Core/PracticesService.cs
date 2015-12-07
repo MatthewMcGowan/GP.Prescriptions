@@ -3,11 +3,9 @@
     using System.Linq;
 
     using Interfaces;
-    using BusinessObjects.Classes;
     using DataAccess.Readers.Core;
     using DataAccess.Readers.Interfaces;
-
-    using GP.Prescriptions.BusinessObjects.Objects;
+    using BusinessObjects.Classes;
 
     /// <summary>
     /// Business service for practice data.

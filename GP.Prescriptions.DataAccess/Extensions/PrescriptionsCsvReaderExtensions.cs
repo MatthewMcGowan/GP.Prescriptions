@@ -23,8 +23,8 @@
                 BNFCode = row[3],
                 BNFName = row[4],
                 Items = int.Parse(row[5]),
-                ActualCost = decimal.Parse(row[6]),
-                NIC = decimal.Parse(row[7]),
+                NIC = decimal.Parse(row[6]),
+                ActualCost = decimal.Parse(row[7]),
                 Period = row[8]
             };
         }

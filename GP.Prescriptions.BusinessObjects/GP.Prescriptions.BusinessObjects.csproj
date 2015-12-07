@@ -41,21 +41,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\ConcurrentDictionaryExtensions.cs" />
-    <Compile Include="Objects\Practices.cs" />
-    <Compile Include="Objects\Region.cs" />
+    <Compile Include="Classes\Practices.cs" />
+    <Compile Include="Classes\PrescriptionsQueryBatch.cs" />
+    <Compile Include="Classes\Region.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\Core\BaseCalcAvgCostByCode.cs" />
-    <Compile Include="Queries\Core\CalcAvgCostByCode.cs" />
-    <Compile Include="Queries\Core\CalcAvgCostByCodeByRegion.cs" />
+    <Compile Include="Queries\Core\BaseCalcTotalByCodeByRegion.cs" />
+    <Compile Include="Queries\Core\CalcAvgActCostByCode.cs" />
+    <Compile Include="Queries\Core\CalcAvgActCostByCodeByRegion.cs" />
     <Compile Include="Queries\Core\CalcAvgNicByCodeByRegion.cs" />
-    <Compile Include="Queries\Core\CalcTotalSpendPerPostcode.cs" />
-    <Compile Include="Queries\Core\PrescriptionsQueryFactory.cs" />
+    <Compile Include="Queries\Core\CalcTotalActCostByCodeByRegion.cs" />
+    <Compile Include="Queries\Core\CalcTotalActCostPerPostcode.cs" />
+    <Compile Include="Factories\Core\PrescriptionsQueryFactory.cs" />
+    <Compile Include="Queries\Core\CalcTotalNicByCodeByRegion.cs" />
     <Compile Include="Queries\Interfaces\ICalcAvgCostByCode.cs" />
     <Compile Include="Queries\Interfaces\ICalcAvgCostByCodeByRegion.cs" />
-    <Compile Include="Queries\Interfaces\ICalcTotalSpendPerPostcode.cs" />
+    <Compile Include="Queries\Interfaces\ICalcAvgNicByCodeByRegion.cs" />
+    <Compile Include="Queries\Interfaces\ICalcTotalActCostByCodeByRegion.cs" />
+    <Compile Include="Queries\Interfaces\ICalcTotalNicByCodeByRegion.cs" />
+    <Compile Include="Queries\Interfaces\ICalcTotalActCostPerPostcode.cs" />
     <Compile Include="Queries\Interfaces\IPrescriptionsQuery.cs" />
-    <Compile Include="Queries\Interfaces\IPrescriptionsQueryFactory.cs" />
+    <Compile Include="Factories\Interfaces\IPrescriptionsQueryFactory.cs" />
     <Compile Include="Structs\PostcodeRegion.cs" />
     <Compile Include="Structs\PracticeData.cs" />
     <Compile Include="Structs\PrescriptionData.cs" />

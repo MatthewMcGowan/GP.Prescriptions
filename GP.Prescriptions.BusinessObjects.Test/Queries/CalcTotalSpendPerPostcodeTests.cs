@@ -8,12 +8,12 @@
     [TestFixture]
     public class CalcTotalSpendPerPostcodeTests :BaseQueriesTests
     {
-        private CalcTotalSpendPerPostcode query;
+        private CalcTotalActCostPerPostcode query;
 
         [SetUp]
         public void Setup()
         {
-            query = new CalcTotalSpendPerPostcode(Practices);
+            query = new CalcTotalActCostPerPostcode(Practices);
         }
 
         [Test]

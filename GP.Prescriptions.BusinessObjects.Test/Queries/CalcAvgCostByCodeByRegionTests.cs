@@ -9,12 +9,12 @@
     [TestFixture]
     public class CalcAvgCostByCodeByRegionTests : BaseQueriesTests
     {
-        private CalcAvgCostByCodeByRegion query;
+        private CalcAvgActCostByCodeByRegion query;
 
         [SetUp]
         public void Setup()
         {
-            query = new CalcAvgCostByCodeByRegion(Data.BnfCode1, Region.London, Practices);
+            query = new CalcAvgActCostByCodeByRegion(Data.BnfCode1, Region.London, Practices);
         }
 
         [Test]

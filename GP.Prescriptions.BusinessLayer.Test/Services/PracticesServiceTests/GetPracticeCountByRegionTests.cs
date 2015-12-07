@@ -1,7 +1,7 @@
 ﻿namespace GP.Prescriptions.BusinessLayer.Test.Services.PracticesServiceTests
 {
-    using GP.Prescriptions.BusinessLayer.Services.Core;
-    using GP.Prescriptions.BusinessObjects.Classes;
+    using BusinessLayer.Services.Core;
+    using BusinessObjects.Classes;
 
     using NUnit.Framework;
 

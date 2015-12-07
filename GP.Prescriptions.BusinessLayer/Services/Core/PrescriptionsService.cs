@@ -8,8 +8,8 @@
     using DataAccess.Readers.Interfaces;
     using BusinessObjects.Queries.Interfaces;
     using BusinessObjects.Queries.Core;
-
-    using GP.Prescriptions.BusinessObjects.Objects;
+    using BusinessObjects.Factories.Core;
+    using BusinessObjects.Factories.Interfaces;
 
     /// <summary>
     /// A business service obtaining data about prescriptions.
@@ -123,41 +123,36 @@
         }
 
         /// <summary>
-        /// Gets the average margin by region.
+        /// Gets the average Actual Cost as a decimal fraction of the average NIC for each region.
         /// </summary>
         /// <param name="bnfCode">The BNF code.</param>
         /// <returns>A fraction for each region.</returns>
-        public Dictionary<Region, decimal> GetAverageMarginByRegion(string bnfCode)
+        public Dictionary<Region, decimal> GetFractionActCostOfNicByRegion(string bnfCode)
         {
-            // Note: Average margin as total ActCost by total NIC
-
             // Get region count
             int regionCount = Region.All.Count;
 
-            // Create list
-            var queries = new List<IPrescriptionsQuery>(2 * regionCount);
+            // Create new batch of queries to send to reader
+            var queryBatch = new PrescriptionsQueryBatch();
 
-            // Add all queries to list
-            // List has guaranteed order, and we rely on this here
-            Region.All.ForEach(r => queries.Add(new CalcAvgCostByCodeByRegion(bnfCode, r, practices)));
-            Region.All.ForEach(r => queries.Add(new CalcAvgNicByCodeByRegion(bnfCode, r, practices)));
+            // Query the average Actual Cost for each region
+            Region.All.ForEach(r => queryBatch.TryAdd(new CalcTotalActCostByCodeByRegion(bnfCode, r, practices)));
+            
+            // Query the average NIC for each region
+            Region.All.ForEach(r => queryBatch.TryAdd(new CalcTotalNicByCodeByRegion(bnfCode, r, practices)));
 
-            // Query using the reader
-            prescriptionsReader.ExecuteQuery(queries);
+            // Execute the queries using the reader
+            prescriptionsReader.ExecuteQuery(queryBatch);
 
             // Calculate return dictionary
             var result = new Dictionary<Region, decimal>(regionCount);
-            for (int i = 0; i < regionCount; i++)
-            {
-                var actQuery = (CalcAvgCostByCodeByRegion)queries[i];
-                var nicQuery = (CalcAvgNicByCodeByRegion)queries[i + regionCount];
-
-                result.Add(actQuery.Region, actQuery.Result / nicQuery.Result);
-            }
+            Region.All.ForEach(r => result.Add(r,
+                queryBatch.GetCalcTotalActCostByCodeByRegion(r, bnfCode).Result
+                / queryBatch.GetCalcTotalNicByCodeByRegion(r, bnfCode).Result));
 
             return result;
         }
 
-        #endregion
-    }
+            #endregion
+        }
 }

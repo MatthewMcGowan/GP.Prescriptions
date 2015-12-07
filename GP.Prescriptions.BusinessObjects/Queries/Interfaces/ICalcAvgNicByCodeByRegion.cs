@@ -1,10 +1,12 @@
 ﻿namespace GP.Prescriptions.BusinessObjects.Queries.Interfaces
 {
+    using Classes;
+
     /// <summary>
-    /// Interface for CalcAvgCostByCode.
+    /// Interface for CalcAvgNicByCodeByRegion.
     /// </summary>
     /// <seealso cref="GP.Prescriptions.BusinessObjects.Queries.Interfaces.IPrescriptionsQuery" />
-    public interface ICalcAvgCostByCode : IPrescriptionsQuery
+    public interface ICalcAvgNicByCodeByRegion : IPrescriptionsQuery
     {
         /// <summary>
         /// Gets the result.
@@ -13,6 +15,14 @@
         /// The result.
         /// </value>
         decimal Result { get; }
+
+        /// <summary>
+        /// Gets the region.
+        /// </summary>
+        /// <value>
+        /// The region.
+        /// </value>
+        Region Region { get; }
 
         /// <summary>
         /// Gets the BNF code.

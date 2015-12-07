@@ -12,7 +12,7 @@
 
     public class GetTotalSpendPerPostcodeTests : BasePrescriptionsServiceTests
     {
-        private Mock<ICalcTotalSpendPerPostcode> query;
+        private Mock<ICalcTotalActCostPerPostcode> query;
 
         private Dictionary<string, decimal> regionSpends;
 
@@ -20,7 +20,7 @@
         public void Setup()
         {
             BaseSetup();
-            query = new Mock<ICalcTotalSpendPerPostcode>();
+            query = new Mock<ICalcTotalActCostPerPostcode>();
             Practices = GetPractices();
         }
 

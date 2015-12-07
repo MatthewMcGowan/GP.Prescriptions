@@ -3,6 +3,7 @@
     using System.Collections.Generic;
 
     using BusinessObjects.Queries.Interfaces;
+    using BusinessObjects.Classes;
 
     /// <summary>
     /// Interface for PrescriptionsCsvReader.
@@ -16,9 +17,15 @@
         void ExecuteQuery(IPrescriptionsQuery query);
 
         /// <summary>
-        /// Executes the query.
+        /// Executes the queries.
         /// </summary>
         /// <param name="queries">The queries.</param>
         void ExecuteQuery(IEnumerable<IPrescriptionsQuery> queries);
+
+        /// <summary>
+        /// Executes the queries.
+        /// </summary>
+        /// <param name="batch">The batch.</param>
+        void ExecuteQuery(PrescriptionsQueryBatch batch);
     }
 }

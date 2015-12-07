@@ -10,11 +10,6 @@
         #region Protected Fields
 
         /// <summary>
-        /// The BNF code.
-        /// </summary>
-        protected readonly string BnfCode;
-
-        /// <summary>
         /// The total sold.
         /// </summary>
         protected long TotalSold;
@@ -57,6 +52,11 @@
                 return TotalSold > 0 ? TotalCost / TotalSold : 0M;
             }
         }
+
+        /// <summary>
+        /// The BNF Code.
+        /// </summary>
+        public string BnfCode { get; protected set; }
 
         #endregion
 

@@ -2,15 +2,15 @@
 {
     using System.Collections.Generic;
 
-    using Objects;
+    using Classes;
     using Structs;
     using Interfaces;
 
     /// <summary>
     /// Query calculating the total spend for all postcodes.
     /// </summary>
-    /// <seealso cref="GP.Prescriptions.BusinessObjects.Queries.Interfaces.ICalcTotalSpendPerPostcode" />
-    public class CalcTotalSpendPerPostcode : ICalcTotalSpendPerPostcode
+    /// <seealso cref="GP.Prescriptions.BusinessObjects.Queries.Interfaces.ICalcTotalActCostPerPostcode" />
+    public class CalcTotalActCostPerPostcode : ICalcTotalActCostPerPostcode
     {
         #region Private Fields
 
@@ -29,10 +29,10 @@
         #region Constructors
 
         /// <summary>
-        /// Initialises a new instance of the <see cref="CalcTotalSpendPerPostcode"/> class.
+        /// Initialises a new instance of the <see cref="CalcTotalActCostPerPostcode"/> class.
         /// </summary>
         /// <param name="practices">The practices.</param>
-        public CalcTotalSpendPerPostcode(Practices practices)
+        public CalcTotalActCostPerPostcode(Practices practices)
         {
             // Set the practices
             this.practices = practices;

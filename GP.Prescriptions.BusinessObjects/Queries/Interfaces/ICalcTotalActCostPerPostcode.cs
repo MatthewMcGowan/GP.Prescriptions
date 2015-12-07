@@ -6,7 +6,7 @@
     /// Interface for CalcTotalSpendPerPostcode.
     /// </summary>
     /// <seealso cref="GP.Prescriptions.BusinessObjects.Queries.Interfaces.IPrescriptionsQuery" />
-    public interface ICalcTotalSpendPerPostcode : IPrescriptionsQuery
+    public interface ICalcTotalActCostPerPostcode : IPrescriptionsQuery
     {
         /// <summary>
         /// Gets the result.

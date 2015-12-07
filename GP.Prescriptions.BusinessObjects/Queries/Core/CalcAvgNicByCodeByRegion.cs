@@ -1,9 +1,6 @@
 ﻿namespace GP.Prescriptions.BusinessObjects.Queries.Core
 {
     using Classes;
-
-    using GP.Prescriptions.BusinessObjects.Objects;
-
     using Interfaces;
     using Structs;
 
@@ -13,7 +10,7 @@
     /// </summary>
     /// <seealso cref="GP.Prescriptions.BusinessObjects.Queries.Core.BaseCalcAvgCostByCode" />
     /// <seealso cref="GP.Prescriptions.BusinessObjects.Queries.Interfaces.ICalcAvgCostByCodeByRegion" />
-    public class CalcAvgNicByCodeByRegion : BaseCalcAvgCostByCode, ICalcAvgCostByCodeByRegion
+    public class CalcAvgNicByCodeByRegion : BaseCalcAvgCostByCode, ICalcAvgNicByCodeByRegion
     {
         #region Private Fields
 
@@ -49,7 +46,7 @@
         /// <value>
         /// The region.
         /// </value>
-        public Region Region { get; set; }
+        public Region Region { get; private set; }
 
         #endregion
 

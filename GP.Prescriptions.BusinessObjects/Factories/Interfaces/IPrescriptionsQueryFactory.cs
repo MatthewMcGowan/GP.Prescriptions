@@ -1,8 +1,7 @@
-﻿namespace GP.Prescriptions.BusinessObjects.Queries.Interfaces
+﻿namespace GP.Prescriptions.BusinessObjects.Factories.Interfaces
 {
     using Classes;
-
-    using GP.Prescriptions.BusinessObjects.Objects;
+    using Queries.Interfaces;
 
     public interface IPrescriptionsQueryFactory
     {
@@ -29,13 +28,13 @@
         /// <param name="region">The region.</param>
         /// <param name="practices">The practices.</param>
         /// <returns></returns>
-        ICalcAvgCostByCodeByRegion CalcAvgNicByCodeByRegion(string bnfCode, Region region, Practices practices);
+        ICalcAvgNicByCodeByRegion CalcAvgNicByCodeByRegion(string bnfCode, Region region, Practices practices);
 
         /// <summary>
         /// Calculates the total spend per postcode.
         /// </summary>
         /// <param name="practices">The practices.</param>
         /// <returns></returns>
-        ICalcTotalSpendPerPostcode CalcTotalSpendPerPostcode(Practices practices);
+        ICalcTotalActCostPerPostcode CalcTotalSpendPerPostcode(Practices practices);
     }
 }
