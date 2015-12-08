@@ -2,11 +2,8 @@
 {
     using System;
     using System.Linq;
-
     using BusinessObjects.Classes;
-
     using BusinessLayer.Services.Core;
-
     using BusinessObjects.Extensions;
 
     class Program
@@ -43,7 +40,7 @@
             if (response != 'y' && response != 'n')
             {
                 Console.WriteLine("Incorrect input");
-                askBooleanQuestion(question);
+                return askBooleanQuestion(question);
             }
 
             // Return true/false based on user input
@@ -107,16 +104,49 @@
         {
             // Read prescriptions and get answer to all questions first
             Console.WriteLine("Processing...");
-
-
+            // Get answers for prescriptions questions 
+            var results = prescriptionService.ExecuteAllQueries("0102000T0", "0501012G0", "0103050E0");
 
             // Find out how many practices there are in London using practices service
             Console.WriteLine("How many practices are in London?");
             int practicesInLondon = practicesService.GetPracticeCountByRegion(Region.London);
             Console.WriteLine(practicesInLondon);
 
-            // Answer other questions 
+            // Find out the average national cost of a peppermint oil prescription
+            Console.WriteLine("What was the average actual cost of all peppermint oil prescriptions?");
+            Console.WriteLine(results.GetAverageActCostResults["0102000T0"].ToString("£0.00"));
 
+            // Find the 5 highest spending postcodes
+            Console.WriteLine("Which 5 post codes have the highest actual spend, and how much did each spend in total?");
+            // Get postcode spends
+            var totalPostcodeSpends = results.GetTotalSpendPerPostcodeResults;
+            // Get top 5
+            var topFive = totalPostcodeSpends.OrderByDescending(p => p.Value).Take(5).ToList();
+            // Write to console
+            topFive.ForEach(p => Console.WriteLine(p.Key + " " + p.Value.ToString("£0.00")));
+
+            // Find average price of Flucloxacillin
+            Console.WriteLine(
+                "For each region, what was the average price per prescription of Flucloxacillin,"
+                + " and how did this vary from the national mean?");
+            // Get average cost per region
+            var averageFlucloxacillinRegions = results.GetAverageActCostPerRegionResults;
+            // Get average cost for country
+            decimal averageFlucloxacillinNational = results.GetAverageActCostResults["0501012G0"];
+            // Write to console
+            Console.WriteLine("National: " + averageFlucloxacillinNational.ToString("£0.00"));
+            averageFlucloxacillinRegions.ForEach(
+                r =>
+                Console.WriteLine(
+                    r.Key + " " + r.Value.ToString("£0.00") + "; "
+                    + (r.Value - averageFlucloxacillinNational).ToString("£0.00")));
+
+            // Find by region the percentage difference between the NIC and Act Cost for
+            Console.WriteLine(
+                "For each region for Simeticone, what was the average Actual Cost "
+                + "as a percentage of the average Net Ingredient Cost?");
+            var actPercentageOfNic = results.GetFractionActCostOfNicByRegionResults;
+            actPercentageOfNic.ForEach(r => Console.WriteLine(r.Key + " " + r.Value.ToString("0.00%")));
         }
     }
 }

@@ -19,7 +19,7 @@
         /// <summary>
         /// The CalcAvgCostByCode queries.
         /// </summary>
-        public Dictionary<string, ICalcAvgCostByCode> calcAvgCostByCodes;
+        private Dictionary<string, ICalcAvgCostByCode> calcAvgCostByCodes;
 
         /// <summary>
         /// The ICalcAvgCostByCodeByRegion queries.
@@ -139,7 +139,7 @@
         public bool TryAdd(ICalcTotalActCostPerPostcode query)
         {
             // Check not already set
-            if (calcTotalSpendPerPostcode == null)
+            if (calcTotalSpendPerPostcode != null)
             {
                 return false;
             }

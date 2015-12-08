@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\PrescriptionsQueryBatchResult.cs" />
     <Compile Include="Extensions\ConcurrentDictionaryExtensions.cs" />
     <Compile Include="Classes\Practices.cs" />
     <Compile Include="Classes\PrescriptionsQueryBatch.cs" />

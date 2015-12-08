@@ -3,9 +3,12 @@
     using System.Collections.Generic;
 
     using Interfaces;
+
     using BusinessObjects.Classes;
+
     using DataAccess.Readers.Core;
     using DataAccess.Readers.Interfaces;
+
     using BusinessObjects.Queries.Interfaces;
     using BusinessObjects.Factories.Core;
     using BusinessObjects.Factories.Interfaces;
@@ -107,10 +110,7 @@
         public Dictionary<Region, decimal> GetAverageActCostPerRegion(string bnfCode)
         {
             // Create list
-            var queries = new List<ICalcAvgCostByCodeByRegion>();
-
-            // Create query for each region
-            Region.All.ForEach(r => queries.Add(queryFactory.CalcAvgCostByCodeByRegion(bnfCode, r, practices)));
+            var queries = GetCalcAvgCostByCodeByRegionQueriesForAllRegions(bnfCode);
 
             // Query csv file
             prescriptionsReader.ExecuteQuery(queries);
@@ -134,26 +134,101 @@
             // Create new batch of queries to send to reader
             var queryBatch = new PrescriptionsQueryBatch();
 
-            // Query the average Actual Cost for each region
-            Region.All.ForEach(r => queryBatch.TryAdd(
-                queryFactory.CalcTotalActCostByCodeByRegion(bnfCode, r, practices)));
-            
-            // Query the average NIC for each region
-            Region.All.ForEach(r => queryBatch.TryAdd(
-                queryFactory.CalcTotalNicByCodeByRegion(bnfCode, r, practices)));
+            // Get the queries
+            PopulateQueryBatchForActCostNicFractionByRegion(queryBatch, bnfCode);
 
             // Execute the queries using the reader
             prescriptionsReader.ExecuteQuery(queryBatch);
 
             // Calculate return dictionary
             var result = new Dictionary<Region, decimal>(regionCount);
-            Region.All.ForEach(r => result.Add(r,
-                queryBatch.GetCalcTotalActCostByCodeByRegion(r, bnfCode).Result
-                / queryBatch.GetCalcTotalNicByCodeByRegion(r, bnfCode).Result));
+            Region.All.ForEach(
+                r =>
+                result.Add(
+                    r,
+                    queryBatch.GetCalcTotalActCostByCodeByRegion(r, bnfCode).Result
+                    / queryBatch.GetCalcTotalNicByCodeByRegion(r, bnfCode).Result));
 
             return result;
         }
 
-            #endregion
+        public PrescriptionsQueryBatchResult ExecuteAllQueries(
+            string averageActCostBnfCode,
+            string averageActCostPerRegionBnfCode,
+            string fractionActCostOfNicByRegionBnfCode)
+        {
+            // Create a query batch
+            var batch = new PrescriptionsQueryBatch();
+
+            // Add all the required queries to this one batch
+            // For GetAverageActCost()
+            batch.TryAdd(queryFactory.CalcAvgCostByCode(averageActCostBnfCode));
+            // For GetTotalSpendPerPostcode()
+            batch.TryAdd(queryFactory.CalcTotalSpendPerPostcode(practices));
+            GetCalcAvgCostByCodeByRegionQueriesForAllRegions(averageActCostPerRegionBnfCode).ForEach(q => batch.TryAdd(q));
+            // For GetAverageActCostPerRegion()
+            batch.TryAdd(queryFactory.CalcAvgCostByCode(averageActCostPerRegionBnfCode));
+            // For GetFractionActCostOfNicByRegion()
+            PopulateQueryBatchForActCostNicFractionByRegion(batch, fractionActCostOfNicByRegionBnfCode);
+
+            // Execute the queries using the reader
+            prescriptionsReader.ExecuteQuery(batch);
+
+            // Create container to return results
+            var results = new PrescriptionsQueryBatchResult();
+
+            // Add results to the return object
+            results.GetAverageActCostResults.Add(averageActCostBnfCode, batch.GetCalcAvgCostByCode(averageActCostBnfCode).Result);
+            results.GetTotalSpendPerPostcodeResults = batch.GetCalcTotalSpendPerPostcode().Result;
+            results.GetAverageActCostResults.Add(averageActCostPerRegionBnfCode, batch.GetCalcAvgCostByCode(averageActCostPerRegionBnfCode).Result);
+            Region.All.ForEach(r =>
+                results.GetAverageActCostPerRegionResults.Add(
+                    r,
+                    batch.GetCalcAvgCostByCodeByRegion(r, averageActCostPerRegionBnfCode).Result));
+            Region.All.ForEach(r =>
+                results.GetFractionActCostOfNicByRegionResults.Add(
+                    r,
+                    batch.GetCalcTotalActCostByCodeByRegion(r, fractionActCostOfNicByRegionBnfCode).Result
+                    / batch.GetCalcTotalNicByCodeByRegion(r, fractionActCostOfNicByRegionBnfCode).Result));
+
+            // Return 
+            return results;
         }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        /// Gets the calculate average cost by code by region for all regions.
+        /// </summary>
+        /// <param name="bnfCode">The BNF code.</param>
+        /// <returns></returns>
+        private List<ICalcAvgCostByCodeByRegion> GetCalcAvgCostByCodeByRegionQueriesForAllRegions(string bnfCode)
+        {
+            var queries = new List<ICalcAvgCostByCodeByRegion>();
+
+            // Create query for each region
+            Region.All.ForEach(r => queries.Add(queryFactory.CalcAvgCostByCodeByRegion(bnfCode, r, practices)));
+
+            return queries;
+        }
+
+        /// <summary>
+        /// Populates the query batch for GetFractionActCostOfNicByRegion.
+        /// </summary>
+        /// <param name="queryBatch">The query batch.</param>
+        /// <param name="bnfCode">The BNF code.</param>
+        private void PopulateQueryBatchForActCostNicFractionByRegion(PrescriptionsQueryBatch queryBatch, string bnfCode)
+        {
+            // Query the average Actual Cost for each region
+            Region.All.ForEach(
+                r => queryBatch.TryAdd(queryFactory.CalcTotalActCostByCodeByRegion(bnfCode, r, practices)));
+
+            // Query the average NIC for each region
+            Region.All.ForEach(r => queryBatch.TryAdd(queryFactory.CalcTotalNicByCodeByRegion(bnfCode, r, practices)));
+        }
+
+        #endregion
+    }
 }
