@@ -1,13 +1,10 @@
 ﻿namespace GP.Prescriptions.BusinessLayer.Test.Services.PrescriptionsServiceTests
 {
     using System.Collections.Generic;
-
-    using GP.Prescriptions.BusinessLayer.Services.Core;
-    using GP.Prescriptions.BusinessObjects.Classes;
-    using GP.Prescriptions.BusinessObjects.Queries.Interfaces;
-
+    using BusinessLayer.Services.Core;
+    using BusinessObjects.Classes;
+    using BusinessObjects.Queries.Interfaces;
     using Moq;
-
     using NUnit.Framework;
 
     public class GetTotalSpendPerPostcodeTests : BasePrescriptionsServiceTests

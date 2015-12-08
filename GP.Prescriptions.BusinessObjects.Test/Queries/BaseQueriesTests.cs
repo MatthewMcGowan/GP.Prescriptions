@@ -1,7 +1,6 @@
 ﻿namespace GP.Prescriptions.BusinessObjects.Test.Queries
 {
     using System.Collections.Concurrent;
-
     using Classes;
     using Structs;
     using Prescriptions.Test.Data;

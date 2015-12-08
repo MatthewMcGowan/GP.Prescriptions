@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GP.Prescriptions.BusinessObjects.Test.Queries
+﻿namespace GP.Prescriptions.BusinessObjects.Test.Queries
 {
     using NUnit.Framework;
-    using Moq;
     using BusinessObjects.Queries.Core;
     using Prescriptions.Test.Data;
     using Classes;

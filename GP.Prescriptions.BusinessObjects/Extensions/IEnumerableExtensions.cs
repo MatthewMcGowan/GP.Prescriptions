@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace GP.Prescriptions.BusinessObjects.Extensions
+﻿namespace GP.Prescriptions.BusinessObjects.Extensions
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Extensions for IEnumerables.
     /// </summary>

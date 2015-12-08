@@ -6,7 +6,6 @@
     using System.Configuration;
     using System.Collections.Concurrent;
     using System.IO;
-
     using BusinessObjects.Structs;
     using Interfaces;
     using LumenWorks.Framework.IO.Csv;

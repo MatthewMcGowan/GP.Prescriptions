@@ -1,13 +1,8 @@
-﻿using GP.Prescriptions.BusinessObjects.Classes;
-using GP.Prescriptions.BusinessObjects.Structs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GP.Prescriptions.BusinessObjects.Queries.Core
+﻿namespace GP.Prescriptions.BusinessObjects.Queries.Core
 {
+    using Classes;
+    using Structs;
+
     public abstract class BaseCalcTotalByCodeByRegion
     {
         #region Private/Protected Fields

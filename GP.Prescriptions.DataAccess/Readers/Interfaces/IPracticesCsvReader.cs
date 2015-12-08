@@ -1,7 +1,6 @@
 ﻿namespace GP.Prescriptions.DataAccess.Readers.Interfaces
 {
     using System.Collections.Generic;
-
     using BusinessObjects.Structs;
 
     /// <summary>

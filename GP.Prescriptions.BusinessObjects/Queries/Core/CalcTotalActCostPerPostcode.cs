@@ -1,7 +1,6 @@
 ﻿namespace GP.Prescriptions.BusinessObjects.Queries.Core
 {
     using System.Collections.Generic;
-
     using Classes;
     using Structs;
     using Interfaces;
@@ -9,7 +8,7 @@
     /// <summary>
     /// Query calculating the total spend for all postcodes.
     /// </summary>
-    /// <seealso cref="GP.Prescriptions.BusinessObjects.Queries.Interfaces.ICalcTotalActCostPerPostcode" />
+    /// <seealso cref="ICalcTotalActCostPerPostcode" />
     public class CalcTotalActCostPerPostcode : ICalcTotalActCostPerPostcode
     {
         #region Private Fields

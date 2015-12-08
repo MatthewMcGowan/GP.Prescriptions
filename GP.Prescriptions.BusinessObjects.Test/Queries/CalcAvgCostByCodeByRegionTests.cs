@@ -3,7 +3,6 @@
     using Classes;
     using BusinessObjects.Queries.Core;
     using Prescriptions.Test.Data;
-
     using NUnit.Framework;
 
     [TestFixture]

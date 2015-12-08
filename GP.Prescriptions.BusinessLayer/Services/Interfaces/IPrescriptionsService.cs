@@ -1,7 +1,6 @@
 ﻿namespace GP.Prescriptions.BusinessLayer.Services.Interfaces
 {
     using System.Collections.Generic;
-
     using BusinessObjects.Classes;
 
     /// <summary>

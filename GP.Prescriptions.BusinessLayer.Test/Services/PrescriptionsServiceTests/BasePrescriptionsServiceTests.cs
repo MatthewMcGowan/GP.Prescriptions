@@ -1,14 +1,12 @@
 ﻿namespace GP.Prescriptions.BusinessLayer.Test.Services.PrescriptionsServiceTests
 {
     using System.Collections.Concurrent;
-
     using BusinessLayer.Services.Core;
     using BusinessObjects.Classes;
     using BusinessObjects.Factories.Interfaces;
     using BusinessObjects.Structs;
     using DataAccess.Readers.Interfaces;
     using Prescriptions.Test.Data;
-
     using Moq;
 
     public abstract class BasePrescriptionsServiceTests

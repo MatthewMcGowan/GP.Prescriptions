@@ -7,7 +7,6 @@
     using DataAccess.Readers.Core;
     using DataAccess.Readers.Interfaces;
     using BusinessObjects.Queries.Interfaces;
-    using BusinessObjects.Queries.Core;
     using BusinessObjects.Factories.Core;
     using BusinessObjects.Factories.Interfaces;
 

@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Configuration;
-
     using LumenWorks.Framework.IO.Csv;
     using Interfaces;
     using System.IO;

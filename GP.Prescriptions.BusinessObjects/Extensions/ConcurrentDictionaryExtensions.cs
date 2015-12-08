@@ -1,7 +1,6 @@
 ﻿namespace GP.Prescriptions.BusinessObjects.Extensions
 {
     using System.Collections.Concurrent;
-
     using Structs;
 
     /// <summary>

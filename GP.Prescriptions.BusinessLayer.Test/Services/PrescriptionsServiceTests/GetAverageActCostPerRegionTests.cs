@@ -2,14 +2,11 @@
 {
     using System.Collections.Generic;
     using System.Linq;
-
-    using GP.Prescriptions.BusinessLayer.Services.Core;
-    using GP.Prescriptions.BusinessObjects.Classes;
-    using GP.Prescriptions.BusinessObjects.Queries.Interfaces;
-    using GP.Prescriptions.Test.Data;
-
+    using BusinessLayer.Services.Core;
+    using BusinessObjects.Classes;
+    using BusinessObjects.Queries.Interfaces;
+    using Prescriptions.Test.Data;
     using Moq;
-
     using NUnit.Framework;
 
     public class GetAverageActCostPerRegionTests : BasePrescriptionsServiceTests

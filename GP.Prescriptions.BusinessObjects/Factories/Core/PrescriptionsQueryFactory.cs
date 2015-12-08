@@ -8,7 +8,7 @@
     /// <summary>
     /// Factory to return a query object.
     /// </summary>
-    /// <seealso cref="GP.Prescriptions.BusinessObjects.Queries.Interfaces.IPrescriptionsQueryFactory" />
+    /// <seealso cref="IPrescriptionsQueryFactory" />
     public class PrescriptionsQueryFactory : IPrescriptionsQueryFactory
     {
         /// <summary>

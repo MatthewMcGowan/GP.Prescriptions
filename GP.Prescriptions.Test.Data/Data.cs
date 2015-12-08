@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GP.Prescriptions.Test.Data
+﻿namespace GP.Prescriptions.Test.Data
 {
-    using BusinessObjects.Classes;
-    using BusinessObjects.Structs;
-
     public static class Data
     {
         public const string PracticeCode1 = "A86001";

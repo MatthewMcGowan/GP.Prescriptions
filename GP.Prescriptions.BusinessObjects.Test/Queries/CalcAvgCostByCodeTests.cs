@@ -1,7 +1,6 @@
 ﻿namespace GP.Prescriptions.BusinessObjects.Test.Queries
 {
     using NUnit.Framework;
-
     using BusinessObjects.Queries.Core;
     using Prescriptions.Test.Data;
 

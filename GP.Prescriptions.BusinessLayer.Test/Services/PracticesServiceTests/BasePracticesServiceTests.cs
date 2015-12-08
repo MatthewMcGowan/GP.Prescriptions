@@ -2,12 +2,10 @@
 {
     using System.Collections.Concurrent;
     using System.Collections.Generic;
-
     using BusinessLayer.Services.Core;
     using BusinessObjects.Structs;
     using DataAccess.Readers.Interfaces;
     using Prescriptions.Test.Data;
-
     using Moq;
 
     public abstract class BasePracticesServiceTests

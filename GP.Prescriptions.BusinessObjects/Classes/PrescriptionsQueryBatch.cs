@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-
     using Queries.Interfaces;
     using Extensions;
     using System.Linq;

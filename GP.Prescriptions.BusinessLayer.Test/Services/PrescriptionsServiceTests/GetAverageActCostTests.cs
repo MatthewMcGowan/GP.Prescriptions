@@ -3,9 +3,7 @@
     using BusinessLayer.Services.Core;
     using BusinessObjects.Queries.Interfaces;
     using Prescriptions.Test.Data;
-
     using Moq;
-
     using NUnit.Framework;
 
     public class GetAverageActCostTests : BasePrescriptionsServiceTests

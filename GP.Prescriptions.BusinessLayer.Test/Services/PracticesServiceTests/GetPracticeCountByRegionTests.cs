@@ -2,7 +2,6 @@
 {
     using BusinessLayer.Services.Core;
     using BusinessObjects.Classes;
-
     using NUnit.Framework;
 
     [TestFixture]
