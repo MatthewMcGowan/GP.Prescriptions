@@ -2,6 +2,9 @@
 {
     using System.Collections.Generic;
 
+    /// <summary>
+    /// A container for the results of multiple, different queries.
+    /// </summary>
     public class PrescriptionsQueryBatchResult
     {
         #region Constructors

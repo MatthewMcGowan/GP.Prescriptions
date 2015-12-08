@@ -34,5 +34,17 @@
         /// <param name="bnfCode">The BNF code.</param>
         /// <returns>The decimal fraction of average Actual Cost to NIC.</returns>
         Dictionary<Region, decimal> GetFractionActCostOfNicByRegion(string bnfCode);
+
+        /// <summary>
+        /// Executes all queries.
+        /// </summary>
+        /// <param name="averageActCostBnfCode">The AverageActCostBnfCode BNF code.</param>
+        /// <param name="averageActCostPerRegionBnfCode">The AverageActCostPerRegionBnfCode BNF code.</param>
+        /// <param name="fractionActCostOfNicByRegionBnfCode">The FractionActCostOfNicByRegionBnfCode BNF code.</param>
+        /// <returns></returns>
+        PrescriptionsQueryBatchResult ExecuteAllQueries(
+            string averageActCostBnfCode,
+            string averageActCostPerRegionBnfCode,
+            string fractionActCostOfNicByRegionBnfCode);
     }
 }

@@ -152,6 +152,13 @@
             return result;
         }
 
+        /// <summary>
+        /// Executes all queries.
+        /// </summary>
+        /// <param name="averageActCostBnfCode">The AverageActCostBnfCode BNF code.</param>
+        /// <param name="averageActCostPerRegionBnfCode">The AverageActCostPerRegionBnfCode BNF code.</param>
+        /// <param name="fractionActCostOfNicByRegionBnfCode">The FractionActCostOfNicByRegionBnfCode BNF code.</param>
+        /// <returns></returns>
         public PrescriptionsQueryBatchResult ExecuteAllQueries(
             string averageActCostBnfCode,
             string averageActCostPerRegionBnfCode,
